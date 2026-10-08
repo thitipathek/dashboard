@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-09T02:45:53+07:00",
+ "generated_at": "2026-10-09T02:49:22+07:00",
  "sources": {
   "instagram": {
    "count": 114,
@@ -1197,15 +1197,15 @@
    }
   ],
   "best_format": {
-   "id": "lifestyle",
-   "name_th": "ไลฟ์สไตล์ / โชว์ไลฟ์",
-   "count": 1,
-   "likes_median": 22000,
-   "likes_n": 1,
-   "small_sample": true,
+   "id": "psych",
+   "name_th": "จิตวิทยา / มายด์เซ็ต",
+   "count": 2,
+   "lift_median": 0.64,
+   "likes_n": 2,
    "platforms": [
-    "tiktok"
-   ]
+    "instagram"
+   ],
+   "small_sample": true
   },
   "top_influencers": [
    {

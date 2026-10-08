@@ -204,7 +204,7 @@ function renderInsight(){
       <div class="muted">${esc(p.who)} · ${esc(p.format_th||"")} · ${bits.join(" · ")||"—"} · ${esc(p.date||"")}</div></li>`;}).join("")
     || `<li class="muted">สัปดาห์นี้ยังไม่มีโพสต์ที่มีวันที่ในช่วง ${esc(I.week_start)}–${esc(I.week_end)}</li>`;
   let bf="—";
-  if(I.best_format){const b=I.best_format; bf=`<b>${esc(b.name_th)}</b><br><span class="muted">${nfmt(b.count)} โพสต์ในสัปดาห์นี้`+(b.likes_median!=null?` · มัธยฐานไลก์ ${nfmt(b.likes_median)} (จาก ${nfmt(b.likes_n)} โพสต์ที่มีไลก์)`:``)+((b.platforms||[]).length?` · ${esc(b.platforms.join(", "))}`:``)+`</span>`+(b.small_sample?`<br><span class="muted">⚠️ ตัวอย่างยังน้อย ใช้เป็นสัญญาณเบื้องต้นเท่านั้น</span>`:``);}
+  if(I.best_format){const b=I.best_format; bf=`<b>${esc(b.name_th)}</b><br><span class="muted">${nfmt(b.count)} โพสต์ในสัปดาห์นี้ · ไลก์มัธยฐานเท่ากับ ${nfmt(b.lift_median)} เท่าของค่ามัธยฐานแพลตฟอร์มนั้น (จาก ${nfmt(b.likes_n)} โพสต์ที่มีไลก์)`+((b.platforms||[]).length?` · ${esc(b.platforms.join(", "))}`:``)+`</span>`+(b.small_sample?`<br><span class="muted">⚠️ ตัวอย่างยังน้อย ใช้เป็นสัญญาณเบื้องต้นเท่านั้น</span>`:``);}
   const inf=(I.top_influencers||[]).map(a=>`<li><b>@${esc(a.handle)}</b> <span class="grade">${esc(a.grade||"—")}</span> · ${nfmt(a.scaled_100)}/100
     <div class="muted">${esc(a.platform)} · ${esc(a.why_th||"")}</div></li>`).join("")
     || `<li class="muted">${esc(I.scores_note_th||"ยังไม่มีคะแนน")}</li>`;

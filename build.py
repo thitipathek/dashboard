@@ -769,28 +769,33 @@ def build_insight(items, formats_payload, generated_at):
             "likes": it["likes"], "comments": it["comments"], "views": it["views"],
         })
 
-    # best-performing format this week: among formats with >=1 dated week item that has likes,
-    # pick highest median likes; else highest count
+    # best-performing format this week. TikTok likes are ~10x Instagram's, so each post is compared
+    # with its own platform: lift = likes / median likes of ALL gallery posts on that platform.
+    # Pick the format with the highest median lift among formats with >= 2 dated posts this week
+    # (falls back to 1 post, flagged small_sample).
+    plat_med = {}
+    for pl in PLATS:
+        vals = [it["likes"] for it in items if it["platform"] == pl and it["likes"] is not None]
+        plat_med[pl] = _median(vals) if vals else None
     week_by_fmt = {}
     for it in week_items:
         week_by_fmt.setdefault(it["format"], []).append(it)
-    best_format = None
     candidates = []
     for fid, group in week_by_fmt.items():
-        likes = [g["likes"] for g in group if g["likes"] is not None]
+        lifts = [it["likes"] / plat_med[it["platform"]] for it in group
+                 if it["likes"] is not None and plat_med.get(it["platform"])]
+        if not lifts:
+            continue
         candidates.append({
-            "id": fid, "name_th": FORMAT_NAME.get(fid, fid),
-            "count": len(group),
-            "likes_median": _round_num(_median(likes)) if likes else None,
-            "likes_n": len(likes),
+            "id": fid, "name_th": FORMAT_NAME.get(fid, fid), "count": len(group),
+            "lift_median": round(_median(lifts), 2), "likes_n": len(lifts),
+            "platforms": sorted({g["platform"] for g in group}),
         })
-    if candidates:
-        with_likes = [c for c in candidates if c["likes_median"] is not None]
-        pick = max(with_likes, key=lambda c: (c["likes_median"], c["count"])) if with_likes \
-            else max(candidates, key=lambda c: c["count"])
-        pick["small_sample"] = pick["count"] < 3
-        pick["platforms"] = sorted({g["platform"] for g in week_by_fmt[pick["id"]]})
-        best_format = pick
+    best_format = None
+    pool = [c for c in candidates if c["likes_n"] >= 2] or candidates
+    if pool:
+        best_format = max(pool, key=lambda c: (c["lift_median"], c["likes_n"]))
+        best_format["small_sample"] = best_format["likes_n"] < 3
 
     # scores
     scored_count = 0
