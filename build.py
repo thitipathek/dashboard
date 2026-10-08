@@ -12,7 +12,9 @@ What it does (standard library only, plus git; node is optional):
       /workspace/youtube-gallery/channel-scores/channel_scores.html -> youtube/index.html
       /workspace/youtube-gallery/videos.json                       -> youtube/videos.html (generated)
       /workspace/trade-tools/index.html                             -> trade-tools/index.html
-  * Writes summary.json (counts, last-updated, 3 latest additions).
+  * Writes summary.json (counts, last-updated, 3 latest additions, formats, insight).
+  * Classifies IG/TikTok/YouTube posts into content formats -> formats/index.html + formats/items.json.
+  * Builds weekly Insight block for the home page.
 Never invents numbers: anything that cannot be read is written as null and shown as "—".
 It never writes to the other repos or to the other bots' folders.
 """
@@ -325,6 +327,595 @@ def build_tradetools():
     return res
 
 
+# ---------------------------------------------------------------- Content formats
+FORMAT_DEFS = [
+    ("chart", "วิเคราะห์ชาร์ต / เซ็ตอัป"),
+    ("recap", "รีแคปเทรด / พิสูจน์ผล"),
+    ("edu", "สอน / ทิป / ทิวโทเรียล"),
+    ("psych", "จิตวิทยา / มายด์เซ็ต"),
+    ("meme", "มีม / ตลก"),
+    ("lifestyle", "ไลฟ์สไตล์ / โชว์ไลฟ์"),
+    ("quiz", "ควิซ / คำถาม / โพล"),
+    ("cta", "CTA คอมเมนต์รับของ / โค้ดส่วนลด"),
+    ("news", "ข่าว / อัปเดตตลาด"),
+    ("testimonial", "รีวิว / ผลนักเรียน"),
+    ("other", "อื่นๆ"),
+]
+FORMAT_NAME = {i: n for i, n in FORMAT_DEFS}
+
+# Deterministic keyword rules over caption + summary + hashtags (+ title/note for YouTube).
+# First match wins, so the order below is the priority.
+_FORMAT_RULES = [
+    ("cta", [
+        r"comment\s*[\"“”'‘’]?[A-Za-z0-9]+[\"“”'‘’]?\s*(and|to|for)\b", r"comment .{0,20} to (get|receive)",
+        r"\bdm me\b", r"\bcode\s*[\"“”']?[A-Z0-9]{3,}[\"“”']?.{0,12}% ?off", r"\d+% off",
+        r"comment settings to know", r"คอมเมนต์ .{0,15}รับ",
+    ]),
+    ("quiz", [
+        r"\bquiz", r"\bpoll\b", r"buy or sell\?", r"would you buy or sell", r"comment your score",
+        r"which (one|setup|side) (would|do)", r"guess the", r"ควิซ", r"โพล",
+    ]),
+    ("testimonial", [
+        r"\bmy students?\b", r"\bstudents?'? results?\b", r"testimonial", r"client results?",
+        r"passed (the |my )?challenge", r"ผลนักเรียน", r"รีวิวจากนักเรียน",
+    ]),
+    ("news", [
+        r"\bnews\b", r"\bnfp\b", r"\bfomc\b", r"\bcpi\b", r"interest rates?", r"market update",
+        r"weekly outlook", r"ข่าว", r"อัปเดตตลาด", r"all[- ]time high", r"record highs?",
+        r"stock split", r"dow tops", r"\binflation\b", r"\bsec\b", r"blackrock", r"\bcftc\b",
+        r"\bhack(ed)?\b", r"announce(s|d|ment)",
+    ]),
+    ("recap", [
+        r"\brecap\b", r"\bp&l\b", r"\bpnl\b", r"(made|makes|earned|banked|generated?|over)\s+\$\d",
+        r"\+\$?\d[\d,.]*\s*(usd|pips)\b", r"\+\d+(\.\d+)?r\b", r"trade result", r"closed (the )?trade",
+        r"keeps printing", r"\bbalance\b", r"\bequity\b", r"target (done|hit)", r"\btp hit\b",
+        r"รีแคป", r"กำไร", r"six[- ]figure", r"positions? open", r"\bpayout\b",
+        r"winning (short|long|trade)", r"profit",
+    ]),
+    ("chart", [
+        r"\bchart\b", r"\bsetup\b", r"order block", r"\bi?fvg\b", r"\bote\b", r"liquidity",
+        r"\bretest\b", r"support.{0,20}resistance", r"fibonacc?h?i", r"\bfib\b", r"\bsmc\b",
+        r"\bict\b", r"price action", r"market structure", r"(demand|supply) zone", r"\bbos\b",
+        r"\bchoch\b", r"order ?flow", r"volume profile", r"point of control", r"\btpo\b",
+        r"วิเคราะห์", r"ชาร์ต", r"กราฟ", r"quasimodo", r"confluence", r"\bentry\b", r"xau/?usd",
+        r"\bnq\b", r"es futures", r"timeframe", r"candlestick", r"pattern", r"breakout",
+        r"absorption", r"trendline", r"\bgap\b", r"momentum", r"\bvwap\b", r"\bema\b", r"\brsi\b",
+    ]),
+    ("psych", [
+        r"psycholog", r"mindset", r"disciplin", r"displine", r"patien(ce|t)", r"emotion",
+        r"\bfear\b", r"\bgreed\b", r"self.?doubt", r"lose hope", r"give up", r"motivation",
+        r"journey of a trader", r"boring", r"จิตวิทยา", r"มายด์เซ็ต", r"วินัย", r"สมาธิ",
+        r"mindfulness", r"habits", r"overtrad", r"revenge trad", r"\bfomo\b", r"your prime",
+        r"harder (road|path)", r"\bsuccess\b", r"\bjoy\b", r"in your 20s", r"compare",
+        r"blow(ing|n)? up", r"พอร์?ตพัง", r"trap\b",
+    ]),
+    ("meme", [
+        r"\bmeme\b", r"\bfunny\b", r"\bjoke\b", r"\bhumou?r\b", r"\blol\b", r"\blmao\b",
+        r"\bpeak\b", r"cartoon", r"มีม", r"ตลก", r"😂", r"home ?alone", r"acts out", r"\bpov\b",
+        r"\bviral clip\b", r"reacts? to",
+    ]),
+    ("lifestyle", [
+        r"lifestyle", r"day in the life", r"\bluxury\b", r"ferrari", r"lamborghini", r"my desk",
+        r"\btravel\b", r"\bflex\b", r"ไลฟ์สไตล์", r"tradinglife", r"femaletrader", r"costco",
+        r"\bvlog\b", r"\bbought\b",
+    ]),
+    ("edu", [
+        r"how to", r"explain", r"\btutorial\b", r"\blessons?\b", r"\btips?\b", r"\blearn",
+        r"beginner", r"\bguide(line)?\b", r"strateg(y|ies)", r"what is", r"education", r"สอน",
+        r"ทิป", r"full course", r"index funds?", r"compound", r"buy and hold", r"portfolio",
+        r"net worth", r"\binvest", r"walks? through", r"breakdown", r"need to know", r"ลงทุน",
+        r"เก็บเงิน", r"\bvs\.?\b",
+    ]),
+]
+_FORMAT_COMPILED = [(fid, [re.compile(p, re.I) for p in pats]) for fid, pats in _FORMAT_RULES]
+
+
+def classify_format(text):
+    t = text or ""
+    for fid, regs in _FORMAT_COMPILED:
+        for r in regs:
+            if r.search(t):
+                return fid
+    return "other"
+
+
+def _num(v):
+    """Parse a numeric field; return int/float or None. Treat 0 views as unknown when flagged."""
+    if v is None or v == "":
+        return None
+    if isinstance(v, (int, float)):
+        return v
+    s = str(v).strip().replace(",", "")
+    m = re.match(r"^([\d.]+)\s*([KMB])?\s*(views?)?$", s, re.I)
+    if m:
+        n = float(m.group(1))
+        u = (m.group(2) or "").upper()
+        if u == "K":
+            n *= 1_000
+        elif u == "M":
+            n *= 1_000_000
+        elif u == "B":
+            n *= 1_000_000_000
+        return int(n) if n == int(n) else n
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def _median(vals):
+    if not vals:
+        return None
+    s = sorted(vals)
+    n = len(s)
+    mid = n // 2
+    return s[mid] if n % 2 else (s[mid - 1] + s[mid]) / 2
+
+
+def _avg(vals):
+    return (sum(vals) / len(vals)) if vals else None
+
+
+def _round_num(v):
+    if v is None:
+        return None
+    if isinstance(v, float):
+        return round(v, 1) if abs(v) < 100 else int(round(v))
+    return int(v)
+
+
+def _item_text(parts):
+    return " ".join(str(p) for p in parts if p)
+
+
+def _stat_block(vals):
+    vals = [v for v in vals if v is not None]
+    return {
+        "n": len(vals),
+        "avg": _round_num(_avg(vals)),
+        "median": _round_num(_median(vals)),
+    }
+
+
+def collect_content_items(ig_posts, tt_items, yt_videos):
+    """Normalize gallery items and attach a format id. Never invents numbers."""
+    out = []
+    for p in ig_posts or []:
+        likes = _num(p.get("likes"))
+        views = _num(p.get("views"))
+        # Instagram views often missing/0 without login — treat 0 as unknown
+        if views is not None and views == 0:
+            views = None
+        comments = _num(p.get("comments"))
+        text = _item_text([
+            p.get("caption"), p.get("summary"),
+            " ".join(p.get("hashtags") or []),
+        ])
+        out.append({
+            "platform": "instagram",
+            "who": ("@" + p["handle"]) if p.get("handle") else "",
+            "title": short(p.get("summary") or p.get("caption"), 90),
+            "url": p.get("url"),
+            "date": (p.get("posted_at") or "")[:10] or None,
+            "likes": likes, "comments": comments, "views": views,
+            "duration_sec": p.get("duration_sec"), "lang": p.get("lang"),
+            "format": classify_format(text),
+            "views_known": views is not None,
+        })
+    for p in tt_items or []:
+        likes = _num(p.get("likes"))
+        views = _num(p.get("views"))
+        if views is not None and views == 0:
+            views = None
+        comments = _num(p.get("comments"))  # usually absent
+        text = _item_text([
+            p.get("caption"), p.get("summary"),
+            " ".join(p.get("hashtags") or []),
+        ])
+        out.append({
+            "platform": "tiktok",
+            "who": p.get("account") or "",
+            "title": short(p.get("summary") or p.get("caption"), 90),
+            "url": p.get("post_url"),
+            "date": (p.get("date") or "")[:10] or None,
+            "likes": likes, "comments": comments, "views": views,
+            "duration_sec": p.get("duration_sec"), "lang": p.get("lang"),
+            "format": classify_format(text),
+            "views_known": views is not None,
+        })
+    for p in yt_videos or []:
+        views = _num(p.get("views"))
+        text = _item_text([p.get("title"), p.get("note"), p.get("topic")])
+        # YouTube dates are relative ("1 year ago") — leave date blank
+        out.append({
+            "platform": "youtube",
+            "who": p.get("channel") or "",
+            "title": short(p.get("title"), 90),
+            "url": p.get("url"),
+            "date": None,
+            "likes": None, "comments": None, "views": views,
+            "duration_sec": None, "lang": None,
+            "format": classify_format(text),
+            "views_known": views is not None,
+        })
+    return out
+
+
+PLAT_TH = {"instagram": "Instagram", "tiktok": "TikTok", "youtube": "YouTube"}
+PLATS = ("instagram", "tiktok", "youtube")
+MIN_RANK_N = 3  # a format needs >= 3 items with a number on a platform to be ranked
+
+
+def _platform_stats(group):
+    out = {}
+    for pl in PLATS:
+        g = [it for it in group if it["platform"] == pl]
+        out[pl] = {
+            "count": len(g),
+            "likes": _stat_block([it["likes"] for it in g]),
+            "comments": _stat_block([it["comments"] for it in g]),
+            "views": _stat_block([it["views"] for it in g]),
+        }
+    return out
+
+
+def _rank(blocks, fid, pl, metric):
+    """Rank of format fid by median metric on platform pl among formats with enough data."""
+    pool = [(b["id"], b["platforms"][pl][metric]["median"]) for b in blocks
+            if b["id"] != "other" and b["platforms"][pl][metric]["n"] >= MIN_RANK_N]
+    pool.sort(key=lambda x: x[1], reverse=True)
+    ids = [x[0] for x in pool]
+    return (ids.index(fid) + 1, len(ids)) if fid in ids else (None, len(ids))
+
+
+def _takeaway_th(b, blocks):
+    """Templated Thai takeaway built only from real numbers in this build."""
+    if b["count"] == 0:
+        return "ยังไม่มีโพสต์ที่เข้ารูปแบบนี้ในข้อมูลชุดนี้"
+    parts = []
+    for pl, metric, word in (("tiktok", "likes", "ไลก์"), ("instagram", "likes", "ไลก์"),
+                             ("tiktok", "views", "วิว"), ("youtube", "views", "วิว")):
+        st = b["platforms"][pl][metric]
+        if st["n"] < MIN_RANK_N:
+            continue
+        r, k = _rank(blocks, b["id"], pl, metric)
+        med = fmt_num(st["median"])
+        if r == 1 and k > 1:
+            parts.append(f"{PLAT_TH[pl]}: {word}มัธยฐาน {med} สูงสุดจาก {k} รูปแบบ")
+        elif r:
+            parts.append(f"{PLAT_TH[pl]}: {word}มัธยฐาน {med} อันดับ {r} จาก {k} รูปแบบ")
+        else:
+            parts.append(f"{PLAT_TH[pl]}: {word}มัธยฐาน {med} (n={st['n']})")
+        if len(parts) >= 2:
+            break
+    if not parts:
+        parts.append(f"ตัวอย่างยังน้อย ({b['count']} โพสต์) ต้องมีอย่างน้อย {MIN_RANK_N} โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ")
+    share = round(b["count"] / b["_total"] * 100) if b.get("_total") else None
+    if share is not None:
+        parts.append(f"คิดเป็น {share}% ของทั้งหมด")
+    return " · ".join(parts)
+
+
+def aggregate_formats(items):
+    by = {fid: [] for fid, _ in FORMAT_DEFS}
+    for it in items:
+        by.setdefault(it["format"], []).append(it)
+    blocks = []
+    for fid, name in FORMAT_DEFS:
+        group = by.get(fid) or []
+        # examples: best item per platform first (likes; YouTube by views), then the rest
+        def key(it):
+            return (it["likes"] if it["likes"] is not None else -1,
+                    it["views"] if it["views"] is not None else -1)
+        per = {pl: sorted([it for it in group if it["platform"] == pl], key=key, reverse=True) for pl in PLATS}
+        picks = [per[pl][0] for pl in ("tiktok", "instagram", "youtube") if per[pl]]
+        rest = sorted([it for it in group if it not in picks], key=key, reverse=True)
+        examples = [{
+            "platform": it["platform"], "who": it["who"], "title": it["title"], "url": it["url"],
+            "likes": it["likes"], "comments": it["comments"], "views": it["views"],
+        } for it in (picks + rest)[:3]]
+        blocks.append({
+            "id": fid, "name_th": name, "count": len(group),
+            "by_platform": {pl: sum(1 for it in group if it["platform"] == pl) for pl in PLATS},
+            "platforms": _platform_stats(group),
+            "examples": examples, "_total": len(items),
+        })
+    for b in blocks:
+        b["takeaway_th"] = _takeaway_th(b, blocks)
+    for b in blocks:
+        b.pop("_total", None)
+    # page-level headline (real numbers only)
+    head = []
+    for pl, metric, word in (("tiktok", "likes", "ไลก์"), ("instagram", "likes", "ไลก์"), ("youtube", "views", "วิว")):
+        pool = [b for b in blocks if b["id"] != "other" and b["platforms"][pl][metric]["n"] >= MIN_RANK_N]
+        if pool:
+            top = max(pool, key=lambda b: b["platforms"][pl][metric]["median"])
+            head.append({"platform": pl, "metric": metric, "format": top["id"], "name_th": top["name_th"],
+                         "median": top["platforms"][pl][metric]["median"], "n": top["platforms"][pl][metric]["n"],
+                         "text_th": f"{PLAT_TH[pl]}: {top['name_th']} ได้{word}มัธยฐานสูงสุด {fmt_num(top['platforms'][pl][metric]['median'])} (n={top['platforms'][pl][metric]['n']})"})
+    return {
+        "total_items": len(items),
+        "by_platform": {pl: sum(1 for it in items if it["platform"] == pl) for pl in PLATS},
+        "headline": head,
+        "note_th": ("ยอดวิว Instagram ที่เป็น 0 หรือว่าง (ต้องล็อกอินถึงจะเห็น) ถือว่าไม่ทราบ และไม่นำไปคิดค่าเฉลี่ย/มัธยฐานวิว · "
+                    "ข้อมูลต้นทางยังไม่มีจำนวนคอมเมนต์ จึงแสดงเป็น — · YouTube ไม่มีไลก์ ใช้วิวตามที่ YouTube แสดง (เช่น 399K) · "
+                    f"จัดอันดับเฉพาะรูปแบบที่มีอย่างน้อย {MIN_RANK_N} โพสต์ที่มีตัวเลขในแพลตฟอร์มนั้น · "
+                    "สถิติแยกตามแพลตฟอร์มเพราะสเกลไลก์ของ TikTok กับ Instagram ต่างกันมาก · ไม่มีการประมาณตัวเลข"),
+        "formats": blocks,
+    }
+
+
+def write_formats_page(fp, path, updated):
+    e = html.escape
+    pc = {"instagram": "#dd2a7b", "tiktok": "#111", "youtube": "#e62117"}
+    cards = []
+    for b in fp["formats"]:
+        rows = []
+        for pl in PLATS:
+            st = b["platforms"][pl]
+            if not st["count"]:
+                continue
+            def c(x):
+                return (f"{fmt_num(x['median'])}<small>เฉลี่ย {fmt_num(x['avg'])}</small>" if x["n"] else "—")
+            rows.append(f"<tr><th><span class='dot' style='background:{pc[pl]}'></span>{PLAT_TH[pl]} <small>{st['count']}</small></th>"
+                        f"<td>{c(st['likes'])}</td><td>{c(st['comments'])}</td><td>{c(st['views'])}"
+                        f"{'' if (not st['views']['n'] or st['views']['n']==st['count']) else f'<small>มีวิว {st["views"]["n"]}/{st["count"]}</small>'}</td></tr>")
+        table = (f"<table><thead><tr><th></th><th>ไลก์ (มัธยฐาน)</th><th>คอมเมนต์</th><th>วิว (มัธยฐาน)</th></tr></thead>"
+                 f"<tbody>{''.join(rows)}</tbody></table>") if rows else ""
+        exs = []
+        for x in b["examples"]:
+            meta = [m for m in (x["likes"] is not None and f"♥ {fmt_num(x['likes'])}",
+                                x["comments"] is not None and f"💬 {fmt_num(x['comments'])}",
+                                x["views"] is not None and f"▶ {fmt_num(x['views'])}") if m] or ["ไม่มีตัวเลข"]
+            exs.append(f"<a class='ex' href='{e(x['url'] or '#')}' target='_blank' rel='noopener'>"
+                       f"<span class='pill' style='background:{pc.get(x['platform'],'#666')}'>{PLAT_TH.get(x['platform'],x['platform'])}</span>"
+                       f"<span class='t'>{e(x['title'] or '—')}</span><span class='m'>{e(x['who'])} · {' · '.join(meta)}</span></a>")
+        cards.append(f"""<article class="card" id="{b['id']}">
+<div class="hd"><h2>{e(b['name_th'])}</h2><b class="cnt">{b['count']}</b></div>
+<div class="plats"><em>Instagram {b['by_platform']['instagram']}</em><em>TikTok {b['by_platform']['tiktok']}</em><em>YouTube {b['by_platform']['youtube']}</em></div>
+{table}<p class="take">💡 {e(b['takeaway_th'])}</p>
+{('<h3>ตัวอย่าง</h3><div class="examples">' + ''.join(exs) + '</div>') if exs else ''}</article>""")
+    head = "".join(f"<li>{e(h['text_th'])}</li>" for h in fp.get("headline") or [])
+    bp = fp.get("by_platform") or {}
+    page = f"""<!doctype html><html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>รูปแบบคอนเทนต์ · MR ALGO</title>
+<style>
+:root{{color-scheme:light dark;--bg:#f4f5f8;--card:#fff;--fg:#151922;--mut:#5d6677;--line:#e2e5ec;--soft:#eef0f5;--gold:#c9940a}}
+@media (prefers-color-scheme:dark){{:root{{--bg:#0d1016;--card:#161a22;--fg:#e9ecf2;--mut:#98a1b3;--line:#262c38;--soft:#1d222c;--gold:#f2c14e}}}}
+body{{margin:0;font-family:system-ui,-apple-system,"Noto Sans Thai",sans-serif;background:var(--bg);color:var(--fg)}}
+.wrap{{max-width:1150px;margin:0 auto;padding:16px 14px 40px}}h1{{font-size:20px;margin:4px 0}}
+.sub{{color:var(--mut);font-size:12.5px;margin:0 0 12px;line-height:1.6}}
+.head{{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px}}
+.head ul{{margin:4px 0 0;padding-left:18px}}.head li{{margin:2px 0}}
+.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}}
+.card{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}}
+.hd{{display:flex;align-items:baseline;justify-content:space-between;gap:8px}}.hd h2{{font-size:16px;margin:0}}
+.cnt{{font-size:22px;font-variant-numeric:tabular-nums}}
+.plats{{display:flex;gap:6px;flex-wrap:wrap}}.plats em{{font-style:normal;background:var(--soft);border-radius:7px;padding:2px 8px;font-size:12px}}
+table{{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}}
+th,td{{text-align:right;padding:5px 4px;border-bottom:1px solid var(--line);vertical-align:top}}
+th:first-child{{text-align:left;white-space:nowrap}}thead th{{font-size:11px;color:var(--mut);font-weight:600}}
+td small,th small{{display:block;font-size:10.5px;color:var(--mut);font-weight:400}}th small{{display:inline}}
+.dot{{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}}
+.take{{font-size:13px;margin:2px 0;line-height:1.5}}h3{{font-size:12.5px;margin:4px 0 0;color:var(--mut)}}
+.examples{{display:flex;flex-direction:column;gap:6px}}
+.ex{{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:10px;padding:7px 10px}}
+.ex:hover{{background:var(--soft)}}.ex .t{{display:block;font-size:13px;margin-top:3px;line-height:1.35}}
+.ex .m{{display:block;font-size:11.5px;color:var(--mut);margin-top:2px}}
+.pill{{display:inline-block;font-size:10px;font-weight:700;color:#fff;border-radius:5px;padding:1px 6px}}
+</style></head><body><div class="wrap">
+<h1>รูปแบบคอนเทนต์</h1>
+<div class="sub">{fp['total_items']} โพสต์ (Instagram {bp.get('instagram',0)} · TikTok {bp.get('tiktok',0)} · YouTube {bp.get('youtube',0)}) จัดกลุ่มอัตโนมัติด้วยกฎคำสำคัญจากแคปชัน สรุป แฮชแท็ก และชื่อคลิป · อัปเดต {e(updated or '—')}</div>
+{f'<div class="head"><b>สรุปเร็ว</b><ul>{head}</ul></div>' if head else ''}
+<div class="grid">{''.join(cards)}</div>
+<p class="sub" style="margin-top:16px">หมายเหตุ: {e(fp.get('note_th',''))}</p>
+</div></body></html>"""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(page)
+
+
+def fmt_num(n):
+    if n is None:
+        return "—"
+    try:
+        n = float(n)
+    except (TypeError, ValueError):
+        return "—"
+    if abs(n) >= 1_000_000:
+        return f"{n/1_000_000:.1f}M".replace(".0M", "M")
+    if abs(n) >= 10_000:
+        return f"{n/1_000:.1f}K".replace(".0K", "K")
+    if n == int(n):
+        return f"{int(n):,}"
+    return f"{n:,.1f}"
+
+
+# ---------------------------------------------------------------- Weekly insight
+SHARED_IT = "/home/box/shared/influencer-tracker"
+
+
+def _parse_iso_date(s):
+    if not s:
+        return None
+    try:
+        return dt.date.fromisoformat(str(s)[:10])
+    except ValueError:
+        return None
+
+
+def build_insight(items, formats_payload, generated_at):
+    now = dt.datetime.now(TZ)
+    today = now.date()
+    week_start = today - dt.timedelta(days=6)  # last 7 calendar days incl. today
+    week_items = []
+    for it in items:
+        d = _parse_iso_date(it.get("date"))
+        if d and week_start <= d <= today:
+            week_items.append(it)
+
+    def eng(it):
+        # likes + comments; views only as tiebreaker when real
+        base = (it["likes"] or 0) + (it["comments"] or 0)
+        views = it["views"] if it.get("views") is not None else -1
+        return (base, views)
+
+    top_posts = []
+    for it in sorted(week_items, key=eng, reverse=True)[:3]:
+        top_posts.append({
+            "platform": it["platform"], "who": it["who"], "title": it["title"],
+            "url": it["url"], "date": it["date"], "format": it["format"],
+            "format_th": FORMAT_NAME.get(it["format"], it["format"]),
+            "likes": it["likes"], "comments": it["comments"], "views": it["views"],
+        })
+
+    # best-performing format this week: among formats with >=1 dated week item that has likes,
+    # pick highest median likes; else highest count
+    week_by_fmt = {}
+    for it in week_items:
+        week_by_fmt.setdefault(it["format"], []).append(it)
+    best_format = None
+    candidates = []
+    for fid, group in week_by_fmt.items():
+        likes = [g["likes"] for g in group if g["likes"] is not None]
+        candidates.append({
+            "id": fid, "name_th": FORMAT_NAME.get(fid, fid),
+            "count": len(group),
+            "likes_median": _round_num(_median(likes)) if likes else None,
+            "likes_n": len(likes),
+        })
+    if candidates:
+        with_likes = [c for c in candidates if c["likes_median"] is not None]
+        pick = max(with_likes, key=lambda c: (c["likes_median"], c["count"])) if with_likes \
+            else max(candidates, key=lambda c: c["count"])
+        pick["small_sample"] = pick["count"] < 3
+        pick["platforms"] = sorted({g["platform"] for g in week_by_fmt[pick["id"]]})
+        best_format = pick
+
+    # scores
+    scored_count = 0
+    scored_total = None
+    top_influencers = []
+    scores_note = None
+    scores_path = os.path.join(SHARED_IT, "scores.json")
+    try:
+        if os.path.isfile(scores_path):
+            sc = json.load(open(scores_path, encoding="utf-8"))
+            accounts = sc.get("accounts") or {}
+            summary = sc.get("summary") or {}
+            status_counts = summary.get("status") or {}
+            scored_total = summary.get("accounts") or len(accounts)
+            scored_count = status_counts.get("scored") or sum(
+                1 for a in accounts.values() if a.get("status") == "scored")
+            ranked = [a for a in accounts.values() if a.get("status") == "scored"
+                      and a.get("scaled_100") is not None]
+            ranked.sort(key=lambda a: a.get("scaled_100") or 0, reverse=True)
+            for a in ranked[:5]:
+                top_influencers.append({
+                    "handle": a.get("handle"), "platform": a.get("platform"),
+                    "scaled_100": a.get("scaled_100"), "grade": a.get("grade"),
+                    "total": a.get("total"), "max": a.get("max"),
+                    "pre_growth": a.get("pre_growth"),
+                    "why_th": a.get("why_th"),
+                    "tags": a.get("tags") or [],
+                })
+            if scored_count == 0:
+                scores_note = "ยังไม่มีบัญชีที่ให้คะแนนครบ (รอ judgement เชิงคุณภาพ)"
+            elif scored_count < (scored_total or 0):
+                scores_note = f"ให้คะแนนครบแล้ว {scored_count} จาก {scored_total} บัญชี (ส่วนที่เหลือรอ judgement)"
+        else:
+            scores_note = "ยังไม่มีไฟล์ scores.json"
+    except Exception as ex:
+        log("scores read failed:", ex)
+        scores_note = "อ่าน scores.json ไม่ได้"
+
+    # rising / growth from snapshots
+    snap_dir = os.path.join(SHARED_IT, "snapshots")
+    snap_files = []
+    if os.path.isdir(snap_dir):
+        snap_files = sorted(f for f in os.listdir(snap_dir) if f.endswith(".json"))
+    rising = {
+        "available": False,
+        "snapshots": len(snap_files),
+        "note_th": "ต้องมีอย่างน้อย 2 สแนปช็อตรายสัปดาห์ถึงจะคำนวณการเติบโตของฟอลโลว์ได้ ตอนนี้มี 1 สแนปช็อต — ยังไม่มีตัวเลขการเติบโต",
+        "accounts": [],
+    }
+    if len(snap_files) >= 2:
+        rising["available"] = True
+        rising["note_th"] = None
+        # compute growth between last two snapshots (read-only)
+        try:
+            older = json.load(open(os.path.join(snap_dir, snap_files[-2]), encoding="utf-8"))
+            newer = json.load(open(os.path.join(snap_dir, snap_files[-1]), encoding="utf-8"))
+            oa, na = older.get("accounts") or {}, newer.get("accounts") or {}
+            growths = []
+            for key, nv in na.items():
+                ov = oa.get(key)
+                if not ov or not nv:
+                    continue
+                of_, nf_ = ov.get("followers"), nv.get("followers")
+                if of_ is None or nf_ is None or of_ <= 0:
+                    continue
+                growths.append({
+                    "id": key,
+                    "handle": (nv.get("handle") or key.split(":", 1)[-1]),
+                    "platform": nv.get("platform") or key.split(":", 1)[0],
+                    "followers_before": of_, "followers_after": nf_,
+                    "delta": nf_ - of_,
+                    "pct": round((nf_ - of_) / of_ * 100, 2),
+                })
+            growths.sort(key=lambda g: g["pct"], reverse=True)
+            rising["accounts"] = growths[:5]
+            rising["from"] = older.get("date")
+            rising["to"] = newer.get("date")
+        except Exception as ex:
+            log("rising compute failed:", ex)
+            rising["available"] = False
+            rising["note_th"] = "อ่านสแนปช็อตไม่สำเร็จ จึงยังไม่แสดงตัวเลขการเติบโต"
+    elif len(snap_files) == 1:
+        rising["note_th"] = f"ตอนนี้มีสแนปช็อต {snap_files[0].replace('.json','')} แค่ 1 ไฟล์ ต้องรอสแนปช็อตสัปดาห์ถัดไปถึงจะบอกได้ว่าใครกำลังพุ่ง"
+    else:
+        rising["note_th"] = "ยังไม่มีสแนปช็อตในโฟลเดอร์ snapshots"
+
+    return {
+        "week_start": week_start.isoformat(),
+        "week_end": today.isoformat(),
+        "week_posts_count": len(week_items),
+        "top_posts": top_posts,
+        "best_format": best_format,
+        "top_influencers": top_influencers,
+        "scored_count": scored_count,
+        "scored_total": scored_total,
+        "scores_note_th": scores_note,
+        "rising": rising,
+    }
+
+
+def load_gallery_posts():
+    """Pull IG + TikTok from cached clones (same as summary builders)."""
+    ig_posts, tt_items = [], []
+    ig_repo = sync_clone("instagram-gallery")
+    if ig_repo:
+        try:
+            ig_posts = json.loads(show(ig_repo, "origin/HEAD", "posts.json"))
+        except Exception as ex:
+            log("ig posts load failed:", ex)
+    tt_repo = sync_clone("tiktok-gallery")
+    if tt_repo:
+        try:
+            tt_items = json.loads(show(tt_repo, "origin/HEAD", "data.json"))
+        except Exception as ex:
+            log("tt data load failed:", ex)
+    yt_videos = []
+    yj = os.path.join(YT_SRC, "videos.json")
+    if os.path.isfile(yj):
+        try:
+            yt_videos = json.load(open(yj, encoding="utf-8")).get("videos") or []
+        except Exception as ex:
+            log("yt videos load failed:", ex)
+    return ig_posts, tt_items, yt_videos
+
+
 # ---------------------------------------------------------------- main
 def main():
     ledger_path = os.path.join(ROOT, "data", "seen.json")
@@ -346,10 +937,43 @@ def main():
         sources["tradetools"] = build_tradetools()
     except Exception as e:
         log("tradetools failed:", e); sources["tradetools"] = empty(url="trade-tools/")
+
+    # Content formats + weekly insight (generated every build)
+    formats_payload, insight, classified = None, None, []
+    try:
+        ig_posts, tt_items, yt_videos = load_gallery_posts()
+        classified = collect_content_items(ig_posts, tt_items, yt_videos)
+        formats_payload = aggregate_formats(classified)
+        sources["formats"] = {
+            "count": formats_payload["total_items"],
+            # newest source update (not "now") so unchanged data doesn't create a commit
+            "updated": max([v for v in (sources.get(k, {}).get("updated") for k in ("instagram", "tiktok", "youtube")) if v] or [None]),
+            "extras": {b["id"]: b["count"] for b in formats_payload["formats"]},
+            "url": "formats/",
+        }
+        write_formats_page(
+            formats_payload,
+            os.path.join(ROOT, "formats", "index.html"),
+            sources["formats"]["updated"],
+        )
+        # also dump classified items for transparency (format stored on each item)
+        with open(os.path.join(ROOT, "formats", "items.json"), "w", encoding="utf-8") as f:
+            json.dump({"generated_at": sources["formats"]["updated"],
+                       "items": classified}, f, ensure_ascii=False, indent=1)
+        insight = build_insight(classified, formats_payload, None)
+        log("formats", {b["id"]: b["count"] for b in formats_payload["formats"]})
+        log("insight week", insight["week_start"], "->", insight["week_end"],
+            "posts", insight["week_posts_count"],
+            "scored", f"{insight['scored_count']}/{insight['scored_total']}")
+    except Exception as e:
+        log("formats/insight failed:", e)
+        sources.setdefault("formats", empty(url="formats/"))
+
     adds = [a for a in adds if a.get("added_at")]
     adds.sort(key=lambda a: a["added_at"], reverse=True)
     summary = {"generated_at": dt.datetime.now(TZ).isoformat(timespec="seconds"),
-               "sources": sources, "latest": adds[:3]}
+               "sources": sources, "latest": adds[:3],
+               "formats": formats_payload, "insight": insight}
     prev_path = os.path.join(ROOT, "summary.json")
     if os.path.isfile(prev_path):  # keep the old timestamp when nothing changed (avoids empty commits)
         prev = json.load(open(prev_path, encoding="utf-8"))
@@ -371,6 +995,7 @@ def main():
             log("pushed")
         else:
             log("no changes to push")
+
 
 
 if __name__ == "__main__":

@@ -85,6 +85,18 @@ h3.sec{font-size:15px;margin:26px 0 10px}
 .frame{flex:1;min-height:0;position:relative;background:var(--bg)}
 .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
 .frame .loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-size:14px}
+
+.insight{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:16px;padding:14px 16px;margin-top:16px;box-shadow:var(--shadow)}
+.insight h2{font-size:16px;margin:0 0 2px;display:flex;align-items:center;gap:8px}
+.insight .when{font-size:12px;color:var(--mut);margin:0 0 10px}
+.insight .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.insight .col h3{font-size:12.5px;color:var(--mut);margin:0 0 6px;font-weight:600;text-transform:none;letter-spacing:0}
+.insight ol,.insight ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.45}
+.insight li{margin:4px 0}
+.insight a{color:inherit}
+.insight .muted{color:var(--mut);font-size:12.5px;line-height:1.5;margin:0}
+.insight .tag{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:5px;padding:1px 6px;margin-right:4px}
+.insight .grade{font-weight:700;color:var(--gold)}
 @media (max-width:520px){
   .num b{font-size:30px}.hello h1{font-size:20px}.tb .meta{display:none}
 }
@@ -103,10 +115,11 @@ h3.sec{font-size:15px;margin:26px 0 10px}
   <section class="view" id="v-home"><div class="home">
     <div class="hello"><h1>ภาพรวมโปรเจกต์</h1><p id="gen">กำลังโหลดข้อมูล…</p></div>
     <div class="grid" id="cards"></div>
+    <div class="insight" id="insight"><div class="muted">กำลังโหลด Insight สัปดาห์นี้…</div></div>
     <h3 class="sec">เพิ่มเข้ามาล่าสุด</h3>
     <div class="latest" id="latest"><div class="note">กำลังโหลด…</div></div>
     <p class="note">ตัวเลขทุกตัวอ่านจากข้อมูลจริงของแต่ละโปรเจกต์ ถ้าอ่านไม่ได้จะแสดงเป็น “—” ไม่มีการประมาณเอง ·
-      Instagram, TikTok และ Influencer Tracker ดึงสดทุกครั้งที่เปิดหน้า ส่วน YouTube, Trade Tools และ Coach Map อัปเดตเมื่อรัน build.py</p>
+      Instagram, TikTok และ Influencer Tracker ดึงสดทุกครั้งที่เปิดหน้า ส่วน YouTube, Trade Tools, Coach Map, รูปแบบคอนเทนต์ และ Insight สัปดาห์นี้อัปเดตเมื่อรัน build.py</p>
   </div></section>
 </main>
 <script>
@@ -129,11 +142,14 @@ const P = [
   {id:"trade-tools", key:"tradetools", name:"Trade Tools", short:"Trade Tools", desc:"อินดิเคเตอร์ บอทเทรด และคอร์สที่ขายในตลาด", color:"#0f766e", letter:"TL",
    url:"trade-tools/", unit:"รายการ", updLabel:"เช็กราคาเมื่อ",
    ex:e=>[e.indicator!=null&&`ตัวชี้วัด ${fmt(e.indicator)}`, e.bot!=null&&`บอท ${fmt(e.bot)}`, e.course!=null&&`คอร์ส ${fmt(e.course)}`]},
+  {id:"formats", name:"รูปแบบคอนเทนต์", short:"รูปแบบคอนเทนต์", desc:"จัดกลุ่มโพสต์ IG · TikTok · YouTube ตามรูปแบบ", color:"#b45309", letter:"FM",
+   url:"formats/", unit:"โพสต์",
+   ex:e=>Object.entries(e||{}).filter(([k,v])=>v>0&&k!=="other").sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>{const N={chart:"ชาร์ต",recap:"รีแคป",edu:"สอน",psych:"มายด์เซ็ต",meme:"มีม",lifestyle:"ไลฟ์",quiz:"ควิซ",cta:"CTA",news:"ข่าว",testimonial:"รีวิว",other:"อื่นๆ"};return `${N[k]||k} ${fmt(v)}`})},
   {id:"coach-map", key:"coachmap", name:"Coach Map", short:"Coach Map", desc:"เส้นทางการขายของโค้ชเทรดจากหน้าสาธารณะ", color:"#7c3aed", letter:"CM",
    url:BASE+"/coach-map/", unit:"โค้ช", ex:e=>[]},
 ];
-const SRC_NAME={instagram:"Instagram",tiktok:"TikTok",influencers:"Influencer",youtube:"YouTube",coachmap:"Coach Map",tradetools:"Trade Tools"};
-const SRC_COLOR={instagram:"#dd2a7b",tiktok:"#111",influencers:"#2563eb",youtube:"#e62117",coachmap:"#7c3aed",tradetools:"#0f766e"};
+const SRC_NAME={instagram:"Instagram",tiktok:"TikTok",influencers:"Influencer",youtube:"YouTube",coachmap:"Coach Map",tradetools:"Trade Tools",formats:"รูปแบบ"};
+const SRC_COLOR={instagram:"#dd2a7b",tiktok:"#111",influencers:"#2563eb",youtube:"#e62117",coachmap:"#7c3aed",tradetools:"#0f766e",formats:"#b45309"};
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt=n=>(n==null||Number.isNaN(n))?"—":Number(n).toLocaleString("th-TH");
@@ -175,6 +191,44 @@ function route(){
   window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",route);route();
+
+
+function nfmt(n){return (n==null||Number.isNaN(n))?"—":Number(n).toLocaleString("th-TH");}
+function renderInsight(){
+  const el=$("#insight"); if(!el) return;
+  const I=S.insight; if(!I){el.innerHTML=`<div class="muted">ยังไม่มี Insight — รอ build ถัดไป</div>`;return;}
+  const TC={instagram:"#dd2a7b",tiktok:"#111",youtube:"#e62117"};
+  const posts=(I.top_posts||[]).map(p=>{
+    const bits=[]; if(p.likes!=null)bits.push("♥ "+nfmt(p.likes)); if(p.comments!=null)bits.push("💬 "+nfmt(p.comments)); if(p.views!=null)bits.push("▶ "+nfmt(p.views));
+    return `<li><a href="${esc(p.url||"#")}" target="_blank" rel="noopener"><span class="tag" style="background:${TC[p.platform]||"#666"}">${esc(p.platform)}</span>${esc(p.title||"—")}</a>
+      <div class="muted">${esc(p.who)} · ${esc(p.format_th||"")} · ${bits.join(" · ")||"—"} · ${esc(p.date||"")}</div></li>`;}).join("")
+    || `<li class="muted">สัปดาห์นี้ยังไม่มีโพสต์ที่มีวันที่ในช่วง ${esc(I.week_start)}–${esc(I.week_end)}</li>`;
+  let bf="—";
+  if(I.best_format){const b=I.best_format; bf=`<b>${esc(b.name_th)}</b><br><span class="muted">${nfmt(b.count)} โพสต์ในสัปดาห์นี้`+(b.likes_median!=null?` · มัธยฐานไลก์ ${nfmt(b.likes_median)} (จาก ${nfmt(b.likes_n)} โพสต์ที่มีไลก์)`:``)+((b.platforms||[]).length?` · ${esc(b.platforms.join(", "))}`:``)+`</span>`+(b.small_sample?`<br><span class="muted">⚠️ ตัวอย่างยังน้อย ใช้เป็นสัญญาณเบื้องต้นเท่านั้น</span>`:``);}
+  const inf=(I.top_influencers||[]).map(a=>`<li><b>@${esc(a.handle)}</b> <span class="grade">${esc(a.grade||"—")}</span> · ${nfmt(a.scaled_100)}/100
+    <div class="muted">${esc(a.platform)} · ${esc(a.why_th||"")}</div></li>`).join("")
+    || `<li class="muted">${esc(I.scores_note_th||"ยังไม่มีคะแนน")}</li>`;
+  const R=I.rising||{};
+  let risingHtml;
+  if(R.available && (R.accounts||[]).length){
+    risingHtml=`<ul>${R.accounts.map(a=>`<li>@${esc(a.handle)} · ${a.pct>=0?"+":""}${nfmt(a.pct)}% (${nfmt(a.followers_before)} → ${nfmt(a.followers_after)})</li>`).join("")}</ul>
+      <p class="muted">${esc(R.from||"")} → ${esc(R.to||"")}</p>`;
+  } else {
+    risingHtml=`<p class="muted">${esc(R.note_th||"ยังไม่มีข้อมูลการเติบโต")}</p>`;
+  }
+  const scoredLine = I.scored_total!=null
+    ? `ให้คะแนนครบ ${nfmt(I.scored_count)} / ${nfmt(I.scored_total)} บัญชี`
+    : (I.scores_note_th||"");
+  el.innerHTML=`<h2>Insight สัปดาห์นี้</h2>
+    <p class="when">สัปดาห์ ${esc(I.week_start)} – ${esc(I.week_end)} · สร้างเมื่อ ${fdate(S.generated_at)} · โพสต์ที่มีวันที่ในสัปดาห์นี้ ${nfmt(I.week_posts_count)}</p>
+    <div class="cols">
+      <div class="col"><h3>โพสต์ Engage สูงสุด 3 อันดับ</h3><ol>${posts}</ol></div>
+      <div class="col"><h3>รูปแบบที่ทำได้ดีสุดสัปดาห์นี้</h3><p>${bf}</p>
+        <p class="muted" style="margin-top:8px"><a href="#/formats">ดูทุกรูปแบบ →</a></p></div>
+      <div class="col"><h3>อินฟลูคะแนนสูงสุด</h3><p class="muted">${esc(scoredLine)}</p><ol>${inf}</ol></div>
+      <div class="col"><h3>ใครกำลังพุ่ง (ฟอลโลว์)</h3>${risingHtml}</div>
+    </div>`;
+}
 
 /* ---------- data ---------- */
 let S={sources:{},latest:[]};const live={};

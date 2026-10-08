@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-09T02:17:13+07:00",
+ "generated_at": "2026-10-09T02:45:53+07:00",
  "sources": {
   "instagram": {
    "count": 114,
@@ -36,13 +36,13 @@
    "url": "https://thitipathek.github.io/coach-map/"
   },
   "youtube": {
-   "count": 12,
-   "updated": "2026-10-08T18:57:49+07:00",
+   "count": 32,
+   "updated": "2026-10-09T02:38:34+07:00",
    "extras": {
     "grades": {
-     "A": 3,
-     "B": 7,
-     "C": 2
+     "A": 5,
+     "B": 18,
+     "C": 9
     },
     "videos": 18
    },
@@ -58,6 +58,24 @@
    },
    "url": "trade-tools/",
    "updated_is_date": true
+  },
+  "formats": {
+   "count": 221,
+   "updated": "2026-10-09T02:38:34+07:00",
+   "extras": {
+    "chart": 103,
+    "recap": 26,
+    "edu": 25,
+    "psych": 27,
+    "meme": 2,
+    "lifestyle": 4,
+    "quiz": 2,
+    "cta": 7,
+    "news": 18,
+    "testimonial": 0,
+    "other": 7
+   },
+   "url": "formats/"
   }
  },
  "latest": [
@@ -85,5 +103,1147 @@
    "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DdlvOX9M-aN-ytdlp-poster.jpg",
    "added_at": "2026-10-08T19:32:51+07:00"
   }
- ]
+ ],
+ "formats": {
+  "total_items": 221,
+  "by_platform": {
+   "instagram": 114,
+   "tiktok": 89,
+   "youtube": 18
+  },
+  "headline": [
+   {
+    "platform": "tiktok",
+    "metric": "likes",
+    "format": "psych",
+    "name_th": "จิตวิทยา / มายด์เซ็ต",
+    "median": 430650,
+    "n": 16,
+    "text_th": "TikTok: จิตวิทยา / มายด์เซ็ต ได้ไลก์มัธยฐานสูงสุด 430.6K (n=16)"
+   },
+   {
+    "platform": "instagram",
+    "metric": "likes",
+    "format": "news",
+    "name_th": "ข่าว / อัปเดตตลาด",
+    "median": 16700,
+    "n": 3,
+    "text_th": "Instagram: ข่าว / อัปเดตตลาด ได้ไลก์มัธยฐานสูงสุด 16.7K (n=3)"
+   },
+   {
+    "platform": "youtube",
+    "metric": "views",
+    "format": "edu",
+    "name_th": "สอน / ทิป / ทิวโทเรียล",
+    "median": 767000,
+    "n": 5,
+    "text_th": "YouTube: สอน / ทิป / ทิวโทเรียล ได้วิวมัธยฐานสูงสุด 767K (n=5)"
+   }
+  ],
+  "note_th": "ยอดวิว Instagram ที่เป็น 0 หรือว่าง (ต้องล็อกอินถึงจะเห็น) ถือว่าไม่ทราบ และไม่นำไปคิดค่าเฉลี่ย/มัธยฐานวิว · ข้อมูลต้นทางยังไม่มีจำนวนคอมเมนต์ จึงแสดงเป็น — · YouTube ไม่มีไลก์ ใช้วิวตามที่ YouTube แสดง (เช่น 399K) · จัดอันดับเฉพาะรูปแบบที่มีอย่างน้อย 3 โพสต์ที่มีตัวเลขในแพลตฟอร์มนั้น · สถิติแยกตามแพลตฟอร์มเพราะสเกลไลก์ของ TikTok กับ Instagram ต่างกันมาก · ไม่มีการประมาณตัวเลข",
+  "formats": [
+   {
+    "id": "chart",
+    "name_th": "วิเคราะห์ชาร์ต / เซ็ตอัป",
+    "count": 103,
+    "by_platform": {
+     "instagram": 55,
+     "tiktok": 36,
+     "youtube": 12
+    },
+    "platforms": {
+     "instagram": {
+      "count": 55,
+      "likes": {
+       "n": 52,
+       "avg": 4254,
+       "median": 2249
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 36,
+      "likes": {
+       "n": 36,
+       "avg": 25444,
+       "median": 14100
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 36,
+       "avg": 429387,
+       "median": 226850
+      }
+     },
+     "youtube": {
+      "count": 12,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 12,
+       "avg": 154617,
+       "median": 97000
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@_forexsignals_",
+      "title": "Marks a two-valley price-action setup on a candlestick chart.",
+      "url": "https://www.tiktok.com/@_forexsignals_/video/7647677591465331989",
+      "likes": 140400,
+      "comments": null,
+      "views": 3300000
+     },
+     {
+      "platform": "instagram",
+      "who": "@onlyriisky",
+      "title": "Hindi-language video on why 90% of traders fall into liquidity traps, with a step-by-step…",
+      "url": "https://www.instagram.com/p/Dd0lhbqS_XS/",
+      "likes": 34000,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "youtube",
+      "who": "TraderNick",
+      "title": "How to Trade XAU/USD: Best Gold Trading Strategy?",
+      "url": "https://www.youtube.com/watch?v=yuFfAM2abhQ",
+      "likes": null,
+      "comments": null,
+      "views": 486000
+     }
+    ],
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 14.1K อันดับ 4 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,249 อันดับ 6 จาก 6 รูปแบบ · คิดเป็น 47% ของทั้งหมด"
+   },
+   {
+    "id": "recap",
+    "name_th": "รีแคปเทรด / พิสูจน์ผล",
+    "count": 26,
+    "by_platform": {
+     "instagram": 21,
+     "tiktok": 5,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 21,
+      "likes": {
+       "n": 20,
+       "avg": 5388,
+       "median": 2936
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 1,
+       "avg": 150000,
+       "median": 150000
+      }
+     },
+     "tiktok": {
+      "count": 5,
+      "likes": {
+       "n": 5,
+       "avg": 20272,
+       "median": 2371
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 5,
+       "avg": 220125,
+       "median": 50900
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@tmktrades",
+      "title": "POV of a trader after a first funded-account payout.",
+      "url": "https://www.tiktok.com/@tmktrades/video/7402272839220415777",
+      "likes": 78700,
+      "comments": null,
+      "views": 779200
+     },
+     {
+      "platform": "instagram",
+      "who": "@bbtradezz_",
+      "title": "Shows a full take-profit outcome and discussion around a 2:1 risk/reward setup.",
+      "url": "https://www.instagram.com/reel/DdKp8ywKzuF/",
+      "likes": 27900,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "instagram",
+      "who": "@trader_kuldeepp",
+      "title": "Reel showing a gold trade that hit its target.",
+      "url": "https://www.instagram.com/p/DauKw3IyAe-/",
+      "likes": 20500,
+      "comments": null,
+      "views": null
+     }
+    ],
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 2,371 อันดับ 6 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,936 อันดับ 3 จาก 6 รูปแบบ · คิดเป็น 12% ของทั้งหมด"
+   },
+   {
+    "id": "edu",
+    "name_th": "สอน / ทิป / ทิวโทเรียล",
+    "count": 25,
+    "by_platform": {
+     "instagram": 6,
+     "tiktok": 14,
+     "youtube": 5
+    },
+    "platforms": {
+     "instagram": {
+      "count": 6,
+      "likes": {
+       "n": 6,
+       "avg": 9677,
+       "median": 6500
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 14,
+      "likes": {
+       "n": 14,
+       "avg": 269682,
+       "median": 29250
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 14,
+       "avg": 2208914,
+       "median": 666700
+      }
+     },
+     "youtube": {
+      "count": 5,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 5,
+       "avg": 1125600,
+       "median": 767000
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@humphreytalks",
+      "title": "Uses an iPhone analogy for a Rich Dad lesson about the market.",
+      "url": "https://www.tiktok.com/@humphreytalks/video/7062782653250194734",
+      "likes": 2800000,
+      "comments": null,
+      "views": 18000000
+     },
+     {
+      "platform": "instagram",
+      "who": "@mlkies",
+      "title": "Thai reel on reaching your first 1 million baht through simple saving and investing.",
+      "url": "https://www.instagram.com/p/DbdIq6xT1_m/",
+      "likes": 31600,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "youtube",
+      "who": "Wysetrade",
+      "title": "Forex Trading For Beginners (FREE FULL COURSE)",
+      "url": "https://www.youtube.com/watch?v=SGSKYQzXdUM",
+      "likes": null,
+      "comments": null,
+      "views": 2400000
+     }
+    ],
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 29.2K อันดับ 3 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 6,500 อันดับ 2 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
+   },
+   {
+    "id": "psych",
+    "name_th": "จิตวิทยา / มายด์เซ็ต",
+    "count": 27,
+    "by_platform": {
+     "instagram": 11,
+     "tiktok": 16,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 11,
+      "likes": {
+       "n": 11,
+       "avg": 26466,
+       "median": 2723
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 16,
+      "likes": {
+       "n": 16,
+       "avg": 473410,
+       "median": 430650
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 16,
+       "avg": 3500712,
+       "median": 3850000
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@disciplinepaystt",
+      "title": "A wall-text reminder to do the work for yourself, not for anyone else.",
+      "url": "https://www.tiktok.com/@disciplinepaystt/video/7642820573436874017",
+      "likes": 1700000,
+      "comments": null,
+      "views": 11200000
+     },
+     {
+      "platform": "instagram",
+      "who": "@josh_zitman",
+      "title": "A “POV: trading worked” reel portraying successful trading and funded-account progress.",
+      "url": "https://www.instagram.com/p/DZG_sYZByzI/",
+      "likes": 107000,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "tiktok",
+      "who": "@disciplinepaystt",
+      "title": "Contrasts praying for an easier road with choosing the harder path.",
+      "url": "https://www.tiktok.com/@disciplinepaystt/video/7643079731885198625",
+      "likes": 902500,
+      "comments": null,
+      "views": 5800000
+     }
+    ],
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 430.6K สูงสุดจาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,723 อันดับ 5 จาก 6 รูปแบบ · คิดเป็น 12% ของทั้งหมด"
+   },
+   {
+    "id": "meme",
+    "name_th": "มีม / ตลก",
+    "count": 2,
+    "by_platform": {
+     "instagram": 2,
+     "tiktok": 0,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 2,
+      "likes": {
+       "n": 2,
+       "avg": 23450,
+       "median": 23450
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 1,
+       "avg": 316000,
+       "median": 316000
+      }
+     },
+     "tiktok": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "instagram",
+      "who": "@lauunq",
+      "title": "peak #daytrading",
+      "url": "https://www.instagram.com/p/Dd4YygtpCaI/",
+      "likes": 30300,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "instagram",
+      "who": "@avaltrades",
+      "title": "Trading in Traffic is peak.",
+      "url": "https://www.instagram.com/p/DbZEw7SqfAO/",
+      "likes": 16600,
+      "comments": null,
+      "views": 316000
+     }
+    ],
+    "takeaway_th": "ตัวอย่างยังน้อย (2 โพสต์) ต้องมีอย่างน้อย 3 โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ · คิดเป็น 1% ของทั้งหมด"
+   },
+   {
+    "id": "lifestyle",
+    "name_th": "ไลฟ์สไตล์ / โชว์ไลฟ์",
+    "count": 4,
+    "by_platform": {
+     "instagram": 1,
+     "tiktok": 3,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 1,
+      "likes": {
+       "n": 1,
+       "avg": 5200,
+       "median": 5200
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 3,
+      "likes": {
+       "n": 3,
+       "avg": 230733,
+       "median": 132600
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 3,
+       "avg": 4357133,
+       "median": 2500000
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@humphreytalks",
+      "title": "Shows a PAMP gold bar bought from Costco as a physical gold buy.",
+      "url": "https://www.tiktok.com/@humphreytalks/video/7355600773339729195",
+      "likes": 537600,
+      "comments": null,
+      "views": 9800000
+     },
+     {
+      "platform": "instagram",
+      "who": "@khatera_markets",
+      "title": "#femaletrader #tradinglife #trading ...",
+      "url": "https://www.instagram.com/p/DdHR5VfBfPc/",
+      "likes": 5200,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "tiktok",
+      "who": "@marktilbury",
+      "title": "Explains why he bought physical gold bars from Costco as part of personal finance.",
+      "url": "https://www.tiktok.com/@marktilbury/video/7678418688579603735",
+      "likes": 132600,
+      "comments": null,
+      "views": 2500000
+     }
+    ],
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 132.6K อันดับ 2 จาก 6 รูปแบบ · TikTok: วิวมัธยฐาน 2.5M อันดับ 2 จาก 6 รูปแบบ · คิดเป็น 2% ของทั้งหมด"
+   },
+   {
+    "id": "quiz",
+    "name_th": "ควิซ / คำถาม / โพล",
+    "count": 2,
+    "by_platform": {
+     "instagram": 2,
+     "tiktok": 0,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 2,
+      "likes": {
+       "n": 2,
+       "avg": 6050,
+       "median": 6050
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "instagram",
+      "who": "@smart.forexpips",
+      "title": "The triple top, Would you buy or sell?",
+      "url": "https://www.instagram.com/p/Dd59q7BjVNp/",
+      "likes": 8600,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "instagram",
+      "who": "@airforexone",
+      "title": "Sunday H1 candlestick buy-or-sell quiz.",
+      "url": "https://www.instagram.com/p/DdyeTwJIJ-l/",
+      "likes": 3500,
+      "comments": null,
+      "views": null
+     }
+    ],
+    "takeaway_th": "ตัวอย่างยังน้อย (2 โพสต์) ต้องมีอย่างน้อย 3 โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ · คิดเป็น 1% ของทั้งหมด"
+   },
+   {
+    "id": "cta",
+    "name_th": "CTA คอมเมนต์รับของ / โค้ดส่วนลด",
+    "count": 7,
+    "by_platform": {
+     "instagram": 7,
+     "tiktok": 0,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 7,
+      "likes": {
+       "n": 7,
+       "avg": 4866,
+       "median": 2800
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "instagram",
+      "who": "@tradelikeosman",
+      "title": "Viral trading meme with a FundedNext discount code. Promo, not a lesson.",
+      "url": "https://www.instagram.com/p/DceriDAxgrw/",
+      "likes": 22600,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "instagram",
+      "who": "@andreacimi.trading",
+      "title": "Comment “GEX” to get it FREE",
+      "url": "https://www.instagram.com/p/DeB_2EcNQCc/",
+      "likes": 3000,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "instagram",
+      "who": "@finshala.with.priya",
+      "title": "Follow and comment settings to know complete settings....",
+      "url": "https://www.instagram.com/p/DcLJL8oK7wr/",
+      "likes": 2900,
+      "comments": null,
+      "views": null
+     }
+    ],
+    "takeaway_th": "Instagram: ไลก์มัธยฐาน 2,800 อันดับ 4 จาก 6 รูปแบบ · คิดเป็น 3% ของทั้งหมด"
+   },
+   {
+    "id": "news",
+    "name_th": "ข่าว / อัปเดตตลาด",
+    "count": 18,
+    "by_platform": {
+     "instagram": 4,
+     "tiktok": 14,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 4,
+      "likes": {
+       "n": 3,
+       "avg": 57957,
+       "median": 16700
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 14,
+      "likes": {
+       "n": 14,
+       "avg": 99902,
+       "median": 3612
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 14,
+       "avg": 1318950,
+       "median": 76600
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@marktilbury",
+      "title": "Uses the Home Alone pizza order to show how inflation has changed everyday prices over ti…",
+      "url": "https://www.tiktok.com/@marktilbury/video/7676435490609925398",
+      "likes": 738600,
+      "comments": null,
+      "views": 6900000
+     },
+     {
+      "platform": "instagram",
+      "who": "@andreyefi",
+      "title": "Viral clip of a live trading session around the NFP news release at a gathering in Bandun…",
+      "url": "https://www.instagram.com/reel/DbxZB0xPNXA/",
+      "likes": 156800,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "tiktok",
+      "who": "@humphreytalks",
+      "title": "Explains Google’s 20-for-1 stock split and why the share price looks much lower.",
+      "url": "https://www.tiktok.com/@humphreytalks/video/7060206932057099567",
+      "likes": 571100,
+      "comments": null,
+      "views": 10000000
+     }
+    ],
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 3,612 อันดับ 5 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 16.7K สูงสุดจาก 6 รูปแบบ · คิดเป็น 8% ของทั้งหมด"
+   },
+   {
+    "id": "testimonial",
+    "name_th": "รีวิว / ผลนักเรียน",
+    "count": 0,
+    "by_platform": {
+     "instagram": 0,
+     "tiktok": 0,
+     "youtube": 0
+    },
+    "platforms": {
+     "instagram": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "youtube": {
+      "count": 0,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     }
+    },
+    "examples": [],
+    "takeaway_th": "ยังไม่มีโพสต์ที่เข้ารูปแบบนี้ในข้อมูลชุดนี้"
+   },
+   {
+    "id": "other",
+    "name_th": "อื่นๆ",
+    "count": 7,
+    "by_platform": {
+     "instagram": 5,
+     "tiktok": 1,
+     "youtube": 1
+    },
+    "platforms": {
+     "instagram": {
+      "count": 5,
+      "likes": {
+       "n": 4,
+       "avg": 2282,
+       "median": 1200
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      }
+     },
+     "tiktok": {
+      "count": 1,
+      "likes": {
+       "n": 1,
+       "avg": 160,
+       "median": 160
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 1,
+       "avg": 4909,
+       "median": 4909
+      }
+     },
+     "youtube": {
+      "count": 1,
+      "likes": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "comments": {
+       "n": 0,
+       "avg": null,
+       "median": null
+      },
+      "views": {
+       "n": 1,
+       "avg": 324000,
+       "median": 324000
+      }
+     }
+    },
+    "examples": [
+     {
+      "platform": "tiktok",
+      "who": "@coinbureau",
+      "title": "Argues altseason may be starting, with money chasing altcoins that have real value rather…",
+      "url": "https://www.tiktok.com/@coinbureau/video/7691192671250959638",
+      "likes": 160,
+      "comments": null,
+      "views": 4909
+     },
+     {
+      "platform": "instagram",
+      "who": "@wicha.nokhong",
+      "title": "For people who work hard and feel too tired to read, the post shows a way to take back ti…",
+      "url": "https://www.instagram.com/p/Ddq_4IalSxw/",
+      "likes": 6000,
+      "comments": null,
+      "views": null
+     },
+     {
+      "platform": "youtube",
+      "who": "THE WALLSTREET FINANCIAL",
+      "title": "Trade Forex. Watch and trade in just 15 minutes. | THE WALLSTREET FINANCIAL",
+      "url": "https://www.youtube.com/watch?v=S4lrKv_zKAI",
+      "likes": null,
+      "comments": null,
+      "views": 324000
+     }
+    ],
+    "takeaway_th": "Instagram: ไลก์มัธยฐาน 1,200 (n=4) · คิดเป็น 3% ของทั้งหมด"
+   }
+  ]
+ },
+ "insight": {
+  "week_start": "2026-10-03",
+  "week_end": "2026-10-09",
+  "week_posts_count": 17,
+  "top_posts": [
+   {
+    "platform": "tiktok",
+    "who": "@marktilbury",
+    "title": "Holds up a 1oz gold coin bought at Costco and why he bought it.",
+    "url": "https://www.tiktok.com/@marktilbury/video/7692472479121509654",
+    "date": "2026-10-03",
+    "format": "lifestyle",
+    "format_th": "ไลฟ์สไตล์ / โชว์ไลฟ์",
+    "likes": 22000,
+    "comments": null,
+    "views": 771400
+   },
+   {
+    "platform": "tiktok",
+    "who": "@humphreytalks",
+    "title": "Explains the 'crossover point', the money milestone after $100K when market earnings star…",
+    "url": "https://www.tiktok.com/@humphreytalks/video/7693250740550110478",
+    "date": "2026-10-05",
+    "format": "edu",
+    "format_th": "สอน / ทิป / ทิวโทเรียล",
+    "likes": 6147,
+    "comments": null,
+    "views": 204400
+   },
+   {
+    "platform": "instagram",
+    "who": "@thesuitedtrader",
+    "title": "A video of a man speaking above a hand-drawn chart marked BOS, with on-screen text 'Good…",
+    "url": "https://www.instagram.com/p/DeHIVpKRXLW/",
+    "date": "2026-10-05",
+    "format": "chart",
+    "format_th": "วิเคราะห์ชาร์ต / เซ็ตอัป",
+    "likes": 3085,
+    "comments": null,
+    "views": null
+   }
+  ],
+  "best_format": {
+   "id": "lifestyle",
+   "name_th": "ไลฟ์สไตล์ / โชว์ไลฟ์",
+   "count": 1,
+   "likes_median": 22000,
+   "likes_n": 1,
+   "small_sample": true,
+   "platforms": [
+    "tiktok"
+   ]
+  },
+  "top_influencers": [
+   {
+    "handle": "skylinetradersclub",
+    "platform": "instagram",
+    "scaled_100": 60.0,
+    "grade": "C",
+    "total": 45,
+    "max": 75,
+    "pre_growth": true,
+    "why_th": "ชุมชนเทรด SMC 287K ทำรีลสอน Order Block/FVG สั้นๆ ซ้ำรูปแบบเดิมและวิวค่อนข้างสม่ำเสมอ แต่ ER ต่ำสำหรับขนาด (0.35%) และคอมเมนต์ส่วนใหญ่เป็นอีโมจิ",
+    "tags": [
+     "คู่แข่งที่ต้องจับตา",
+     "น่าศึกษาคอนเทนต์"
+    ]
+   },
+   {
+    "handle": "tsugitrades",
+    "platform": "instagram",
+    "scaled_100": 46.7,
+    "grade": "D",
+    "total": 35,
+    "max": 75,
+    "pre_growth": true,
+    "why_th": "โค้ชเทคนิคอลหุ้น/ออปชัน 176K มีวอตช์ลิสต์รายวันที่ทำซ้ำได้ แต่คนมีส่วนร่วมต่ำสำหรับขนาดบัญชี (ER 0.26%) และ CTA ส่วนใหญ่เป็นแค่ลิงก์ในไบโอ",
+    "tags": [
+     "น่าศึกษาคอนเทนต์"
+    ]
+   }
+  ],
+  "scored_count": 2,
+  "scored_total": 112,
+  "scores_note_th": "ให้คะแนนครบแล้ว 2 จาก 112 บัญชี (ส่วนที่เหลือรอ judgement)",
+  "rising": {
+   "available": false,
+   "snapshots": 1,
+   "note_th": "ตอนนี้มีสแนปช็อต 2026-10-08 แค่ 1 ไฟล์ ต้องรอสแนปช็อตสัปดาห์ถัดไปถึงจะบอกได้ว่าใครกำลังพุ่ง",
+   "accounts": []
+  }
+ }
 }
