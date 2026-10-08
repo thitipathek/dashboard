@@ -350,6 +350,11 @@ def main():
     adds.sort(key=lambda a: a["added_at"], reverse=True)
     summary = {"generated_at": dt.datetime.now(TZ).isoformat(timespec="seconds"),
                "sources": sources, "latest": adds[:3]}
+    prev_path = os.path.join(ROOT, "summary.json")
+    if os.path.isfile(prev_path):  # keep the old timestamp when nothing changed (avoids empty commits)
+        prev = json.load(open(prev_path, encoding="utf-8"))
+        if {k: v for k, v in prev.items() if k != "generated_at"} == {k: v for k, v in summary.items() if k != "generated_at"}:
+            summary["generated_at"] = prev.get("generated_at", summary["generated_at"])
     with open(os.path.join(ROOT, "summary.json"), "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=1)
     with open(ledger_path, "w", encoding="utf-8") as f:
