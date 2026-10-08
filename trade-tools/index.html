@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>รายการเครื่องมือเทรด</title>
+<style>
+body{font-family:system-ui,-apple-system,"Noto Sans Thai",sans-serif;margin:0;background:#f5f6f8;color:#1d2330}
+header{background:#14213d;color:#fff;padding:24px 20px}
+header h1{margin:0 0 6px;font-size:24px}header p{margin:0;opacity:.8;font-size:14px}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filters button{border:1px solid #c9ced8;background:#fff;border-radius:20px;padding:8px 16px;cursor:pointer;font-size:14px}
+.filters button.on{background:#14213d;color:#fff;border-color:#14213d}
+#q{flex:1;min-width:180px;padding:8px 14px;border:1px solid #c9ced8;border-radius:20px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:8px}
+.tag{font-size:12px;padding:3px 10px;border-radius:10px;align-self:flex-start;font-weight:600}
+.indicator{background:#e3f0ff;color:#1559b5}.bot{background:#e6f7ec;color:#1b7a3d}.course{background:#fff1df;color:#a35a00}
+.card h2{margin:0;font-size:17px}.seller{font-size:13px;color:#5b6475}
+.price{font-size:20px;font-weight:700}.sub{font-size:13px;color:#5b6475}
+.note{font-size:12px;background:#fff8e1;border-left:3px solid #f0b400;padding:6px 8px;border-radius:4px}
+.card a{margin-top:auto;color:#1559b5;font-weight:600;text-decoration:none}
+footer{font-size:12px;color:#6b7280;text-align:center;padding:20px}
+</style></head><body>
+<header><h1>รายการเครื่องมือเทรด</h1><p>ราคาคัดจากหน้าขายของผู้ขายเมื่อ 4 ต.ค. 2026 ราคาอาจเปลี่ยนได้ ตรวจที่ลิงก์ก่อนซื้อทุกครั้ง</p></header>
+<div class="wrap">
+<div class="filters">
+<button class="on" data-f="all">ทั้งหมด</button><button data-f="indicator">ตัวชี้วัด</button><button data-f="bot">บอท</button><button data-f="course">คอร์ส</button>
+<input id="q" placeholder="ค้นหาชื่อหรือผู้ขาย">
+</div>
+<div class="grid" id="grid"></div>
+</div>
+<footer>รวบรวมโดย Trade Tools · ไม่ได้สมัครหรือซื้อสินค้าใดๆ · ราคาไม่รวมภาษีถ้าหน้าเว็บไม่ได้ระบุ</footer>
+<script>
+const L={indicator:"ตัวชี้วัด",bot:"บอท",course:"คอร์ส"};
+const items=[
+{c:"indicator",n:"LuxAlgo",s:"LuxAlgo",d:"แพ็กเกจตัวชี้วัดบนชาร์ต แผนเสียเงินได้ไลบรารีเต็ม",p:"$224.91 ครั้งแรก",x:"แผน Essential รายปี (โปร FALL) แล้วต่ออายุ $299.88/ปี · Premium $335.92 แล้ว $479.88/ปี",w:"โปร FALL ไม่มีวันสิ้นสุดเขียนบนหน้า",u:"https://www.luxalgo.com/pricing/"},
+{c:"indicator",n:"Haven Market Structure PRO",s:"Maksim Tarutin (MQL5)",d:"อินดิเคเตอร์ MT5 แสดงโครงสร้างราคาและจุดเปลี่ยนทิศ ไม่เปิดออเดอร์",p:"30 USD",x:"หน้าไม่ได้ระบุว่าครั้งเดียวหรือรายเดือน",u:"https://www.mql5.com/en/market/product/127939"},
+{c:"indicator",n:"Entry Points Pro for MT5",s:"Yury Orlov (MQL5)",d:"ลูกศรจุดเข้าเมื่อแท่งปิด พร้อมราคาเข้า จุดตัดขาดทุน และขนาดล็อตตามความเสี่ยง",p:"149 USD",x:"หรือเช่าเริ่ม 59 USD ต่อเดือน · VAT คิดเพิ่มตอนชำระ",u:"https://www.mql5.com/en/market/product/62358"},
+{c:"indicator",n:"Power Candles MT5",s:"Daniel Stein (MQL5)",d:"ระบายสีแท่งเทียนตามความแข็งของราคา และวางจุดเข้า จุดตัด เป้า",p:"99 USD",x:"หน้าไม่ได้ระบุว่าครั้งเดียวหรือรายเดือน",u:"https://www.mql5.com/en/market/product/158610"},
+{c:"indicator",n:"Smart Stop Indicator MT5",s:"Daniel Stein (MQL5)",d:"แสดงจุดตัดขาดทุนตามโครงสร้างราคาของฝั่งที่เทรดอยู่",p:"79 USD",x:"ราคาปกติตามหน้าเว็บ",w:"ราคาโปร 59 USD หมดเขต 4 ต.ค. 2026 แล้ว ควรเช็กราคาปัจจุบัน",u:"https://www.mql5.com/en/market/product/154265"},
+{c:"indicator",n:"RelicusRoad Pro MT5",s:"Relicus LLC (MQL5)",d:"ชุดช่องความผันผวน ออเดอร์บล็อก FVG แนวรับแนวต้าน และสแกนเนอร์",p:"247 USD",x:"หน้าไม่ได้ระบุว่าครั้งเดียวหรือรายเดือน",u:"https://www.mql5.com/en/market/product/103869"},
+{c:"bot",n:"3Commas",s:"3Commas",d:"บอทเทรดคริปโต (DCA, Signal, Grid)",p:"$15 / เดือน",x:"Starter (ขีดฆ่า $20) · Pro $38 · Expert $105 ต่อเดือน",w:"ราคาขีดฆ่าไม่มีวันสิ้นสุดเขียนบนหน้า",u:"https://3commas.io/pricing"},
+{c:"bot",n:"Cryptohopper",s:"Cryptohopper",d:"บอทเทรดคริปโต แผนสูงมี market making และ arbitrage",p:"$29 / เดือน",x:"Explorer ($24.16/เดือนถ้าจ่ายรายปี) · Adventurer $69 · Hero $129 · ไม่รวม VAT · ทดลองฟรี 3 วัน",u:"https://www.cryptohopper.com/pricing"},
+{c:"course",n:"Brooks Trading Course",s:"Brooks Trading Course",d:"คอร์สวิดีโอ price action สำหรับฟิวเจอร์ส ฟอเร็กซ์ หุ้น",p:"US$399",x:"จ่ายครั้งเดียว เข้าถึงตลอดชีพ · ชุด Combo US$499 · คอร์ส Forex US$399",u:"https://www.brookstradingcourse.com/buy-the-brooks-price-action-trading-course/"},
+{c:"course",n:"Bullish Bears",s:"Bullish Bears",d:"คอร์สเทรดรายวัน สวิง ออปชั่น ฟิวเจอร์ส",p:"$297 / ปี",x:"คอร์สเริ่มต้นถึงกลาง · แผนครั้งเดียว $497 (เดิม $597) และ $797 (เดิม $997)",u:"https://bullishbears.com/pricing/"}
+];
+let f="all";
+function draw(){const q=document.getElementById("q").value.toLowerCase();
+document.getElementById("grid").innerHTML=items.filter(i=>(f=="all"||i.c==f)&&(i.n+i.s).toLowerCase().includes(q)).map(i=>`<div class="card"><span class="tag ${i.c}">${L[i.c]}</span><h2>${i.n}</h2><div class="seller">ผู้ขาย: ${i.s}</div><div>${i.d}</div><div class="price">${i.p}</div><div class="sub">${i.x}</div>${i.w?`<div class="note">${i.w}</div>`:""}<a href="${i.u}" target="_blank">ดูหน้าขาย →</a></div>`).join("");}
+document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filters button").forEach(x=>x.classList.remove("on"));b.classList.add("on");f=b.dataset.f;draw();});
+document.getElementById("q").oninput=draw;draw();
+</script></body></html>

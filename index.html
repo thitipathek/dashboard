@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1218" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MR ALGO">
+<title>MR ALGO Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23d4a017'/%3E%3Cpath d='M7 22l6-7 4 4 8-9' stroke='%23111' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f5f8;--panel:#ffffff;--fg:#151922;--mut:#5d6677;--line:#e2e5ec;--soft:#eef0f5;
+  --gold:#c9940a;--gold-soft:#fff6db;--shadow:0 1px 2px rgba(16,24,40,.06),0 2px 8px rgba(16,24,40,.05);
+  --hdr:108px;
+}
+:root[data-theme="dark"]{
+  --bg:#0d1016;--panel:#161a22;--fg:#e9ecf2;--mut:#98a1b3;--line:#262c38;--soft:#1d222c;
+  --gold:#f2c14e;--gold-soft:#2a2414;--shadow:none;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1016;--panel:#161a22;--fg:#e9ecf2;--mut:#98a1b3;--line:#262c38;--soft:#1d222c;
+    --gold:#f2c14e;--gold-soft:#2a2414;--shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:system-ui,-apple-system,"Noto Sans Thai","Sukhumvit Set",sans-serif;background:var(--bg);color:var(--fg);
+  -webkit-text-size-adjust:100%;display:flex;flex-direction:column;min-height:100dvh}
+a{color:inherit}
+header{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top)}
+.bar{display:flex;align-items:center;gap:10px;padding:10px max(14px,env(safe-area-inset-right)) 6px max(14px,env(safe-area-inset-left));max-width:1200px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;letter-spacing:.2px}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--gold);display:grid;place-items:center}
+.logo i svg{width:18px;height:18px}
+.logo small{font-weight:600;color:var(--mut);margin-left:2px}
+.sp{flex:1}
+.iconbtn{border:1px solid var(--line);background:var(--soft);color:var(--fg);border-radius:10px;height:34px;min-width:34px;padding:0 10px;font:inherit;font-size:13px;cursor:pointer}
+nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px max(14px,env(safe-area-inset-left)) 10px;max-width:1200px;margin:0 auto;-webkit-overflow-scrolling:touch}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;font-size:14px;padding:7px 13px;border-radius:999px;color:var(--mut);border:1px solid transparent;white-space:nowrap}
+nav a:hover{background:var(--soft)}
+nav a.on{background:var(--fg);color:var(--bg);font-weight:600}
+main{flex:1;display:flex;flex-direction:column;min-height:0}
+.view{display:none;flex:1;min-height:0;flex-direction:column}
+.view.on{display:flex}
+.home{max-width:1200px;width:100%;margin:0 auto;padding:18px max(14px,env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+.hello h1{font-size:22px;margin:0 0 4px}
+.hello p{margin:0;color:var(--mut);font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-top:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.ch{display:flex;align-items:center;gap:10px}
+.ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;flex:none}
+.ch h2{font-size:16px;margin:0}
+.ch .d{font-size:12.5px;color:var(--mut);margin-top:1px}
+.num{display:flex;align-items:baseline;gap:7px}
+.num b{font-size:34px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.num span{color:var(--mut);font-size:14px}
+.ex{font-size:12.5px;color:var(--mut);display:flex;flex-wrap:wrap;gap:6px}
+.ex em{font-style:normal;background:var(--soft);border-radius:7px;padding:2px 8px}
+.upd{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:#9aa3b5;flex:none}
+.dot.fresh{background:#22a55a}
+.btns{display:flex;gap:8px;margin-top:auto}
+.btn{flex:1;text-align:center;text-decoration:none;font-size:14px;font-weight:600;padding:9px 10px;border-radius:10px;background:var(--fg);color:var(--bg)}
+.btn.alt{flex:none;background:var(--soft);color:var(--fg);border:1px solid var(--line);font-weight:500}
+h3.sec{font-size:15px;margin:26px 0 10px}
+.latest{display:flex;flex-direction:column;gap:8px}
+.li{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px;text-decoration:none}
+.li img,.li .ph{width:52px;height:52px;border-radius:10px;object-fit:cover;flex:none;background:var(--soft)}
+.li .t{font-size:13.5px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.li .m{font-size:12px;color:var(--mut);margin-top:3px}
+.pill{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:6px;padding:1px 6px;margin-right:4px}
+.note{font-size:12px;color:var(--mut);margin-top:22px;line-height:1.6}
+.tb{display:flex;align-items:center;gap:8px;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+.tb h2{font-size:15px;margin:0}
+.tb .meta{font-size:12px;color:var(--mut)}
+.seg{display:flex;gap:4px;background:var(--soft);border-radius:9px;padding:3px}
+.seg button{border:0;background:transparent;color:var(--mut);font:inherit;font-size:13px;padding:5px 10px;border-radius:7px;cursor:pointer}
+.seg button.on{background:var(--panel);color:var(--fg);font-weight:600;box-shadow:var(--shadow)}
+.tb a.open{font-size:13px;font-weight:600;text-decoration:none;padding:6px 11px;border-radius:9px;border:1px solid var(--line);background:var(--soft);white-space:nowrap}
+.frame{flex:1;min-height:0;position:relative;background:var(--bg)}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.frame .loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-size:14px}
+@media (max-width:520px){
+  .num b{font-size:30px}.hello h1{font-size:20px}.tb .meta{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="logo" href="#/"><i><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-7 4 4 8-9"/></svg></i>MR ALGO <small>Dashboard</small></a>
+    <span class="sp"></span>
+    <button class="iconbtn" id="theme" title="สลับธีม">อัตโนมัติ</button>
+  </div>
+  <nav id="nav"></nav>
+</header>
+<main id="main">
+  <section class="view" id="v-home"><div class="home">
+    <div class="hello"><h1>ภาพรวมโปรเจกต์</h1><p id="gen">กำลังโหลดข้อมูล…</p></div>
+    <div class="grid" id="cards"></div>
+    <h3 class="sec">เพิ่มเข้ามาล่าสุด</h3>
+    <div class="latest" id="latest"><div class="note">กำลังโหลด…</div></div>
+    <p class="note">ตัวเลขทุกตัวอ่านจากข้อมูลจริงของแต่ละโปรเจกต์ ถ้าอ่านไม่ได้จะแสดงเป็น “—” ไม่มีการประมาณเอง ·
+      Instagram, TikTok และ Influencer Tracker ดึงสดทุกครั้งที่เปิดหน้า ส่วน YouTube, Trade Tools และ Coach Map อัปเดตเมื่อรัน build.py</p>
+  </div></section>
+</main>
+<script>
+const BASE = "https://thitipathek.github.io";
+const P = [
+  {id:"instagram", name:"Instagram", short:"Instagram", desc:"โพสต์ไวรัลสายเทรด ลงทุน และ mindset", color:"linear-gradient(135deg,#f58529,#dd2a7b,#8134af)", letter:"IG",
+   url:BASE+"/instagram-gallery/", unit:"โพสต์", live:{file:"posts.json", f:d=>({count:d.length, extras:{accounts:uniq(d,"handle"), videos:d.filter(p=>/\.mp4$/i.test(p.image||"")).length}})},
+   ex:e=>[e.accounts!=null&&`${fmt(e.accounts)} บัญชี`, e.videos!=null&&`วิดีโอ ${fmt(e.videos)}`]},
+  {id:"tiktok", name:"TikTok", short:"TikTok", desc:"คลิปเทรนด์สายเทรด การเงิน และ mindset", color:"#111", letter:"TT",
+   url:BASE+"/tiktok-gallery/", unit:"คลิป", live:{file:"data.json", f:d=>({count:d.length, extras:{accounts:uniq(d,"account")}})},
+   ex:e=>[e.accounts!=null&&`${fmt(e.accounts)} บัญชี`]},
+  {id:"influencers", name:"Influencer Tracker", short:"Influencer Tracker", desc:"ติดตามยอดฟอลและการเติบโตของอินฟลูทุกสัปดาห์", color:"#2563eb", letter:"IN",
+   url:BASE+"/influencer-tracker/", unit:"บัญชี", live:{file:"data/site.json", f:d=>{const a=d.accounts||[],c=d.counts||{};return {count:a.length||null, updated:d.generated_at,
+     extras:{instagram:c.instagram??null, tiktok:c.tiktok??null, with_stats:a.length?a.filter(x=>x.followers!=null).length:null, snapshots:(d.snapshot_dates||[]).length||null}}}},
+   ex:e=>[e.instagram!=null&&`Instagram ${fmt(e.instagram)}`, e.tiktok!=null&&`TikTok ${fmt(e.tiktok)}`, e.with_stats!=null&&`มีสถิติ ${fmt(e.with_stats)}`, e.snapshots!=null&&`เก็บสถิติ ${fmt(e.snapshots)} รอบ`]},
+  {id:"youtube", name:"YouTube", short:"YouTube", desc:"คะแนนช่องเทรด และคลิปที่เก็บไว้", color:"#e62117", letter:"YT",
+   url:"youtube/", unit:"ช่องที่ให้คะแนน",
+   subs:[{label:"คะแนนช่อง", url:"youtube/"},{label:"คลิปที่เก็บ", url:"youtube/videos.html"}],
+   ex:e=>[e.videos!=null&&`คลิปที่เก็บ ${fmt(e.videos)}`, ...Object.entries(e.grades||{}).map(([g,n])=>`เกรด ${g} ${fmt(n)}`)]},
+  {id:"trade-tools", key:"tradetools", name:"Trade Tools", short:"Trade Tools", desc:"อินดิเคเตอร์ บอทเทรด และคอร์สที่ขายในตลาด", color:"#0f766e", letter:"TL",
+   url:"trade-tools/", unit:"รายการ", updLabel:"เช็กราคาเมื่อ",
+   ex:e=>[e.indicator!=null&&`ตัวชี้วัด ${fmt(e.indicator)}`, e.bot!=null&&`บอท ${fmt(e.bot)}`, e.course!=null&&`คอร์ส ${fmt(e.course)}`]},
+  {id:"coach-map", key:"coachmap", name:"Coach Map", short:"Coach Map", desc:"เส้นทางการขายของโค้ชเทรดจากหน้าสาธารณะ", color:"#7c3aed", letter:"CM",
+   url:BASE+"/coach-map/", unit:"โค้ช", ex:e=>[]},
+];
+const SRC_NAME={instagram:"Instagram",tiktok:"TikTok",influencers:"Influencer",youtube:"YouTube",coachmap:"Coach Map",tradetools:"Trade Tools"};
+const SRC_COLOR={instagram:"#dd2a7b",tiktok:"#111",influencers:"#2563eb",youtube:"#e62117",coachmap:"#7c3aed",tradetools:"#0f766e"};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>(n==null||Number.isNaN(n))?"—":Number(n).toLocaleString("th-TH");
+const uniq=(a,k)=>new Set(a.map(x=>x[k]).filter(Boolean)).size;
+const TH_M=["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+function inBkk(iso){const d=new Date(iso);if(isNaN(d))return null;return new Date(d.getTime()+(7*60+d.getTimezoneOffset())*60000);}
+function fdate(iso,dateOnly){if(!iso)return "—";const d=inBkk(iso);if(!d)return "—";
+  const s=`${d.getDate()} ${TH_M[d.getMonth()]} ${d.getFullYear()}`;
+  return dateOnly?s:`${s} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")} น.`;}
+function ago(iso){const ms=Date.now()-new Date(iso).getTime();if(isNaN(ms))return "";const h=ms/36e5;
+  if(h<1)return "เมื่อสักครู่";if(h<24)return `${Math.floor(h)} ชม.ที่แล้ว`;return `${Math.floor(h/24)} วันที่แล้ว`;}
+
+/* ---------- theme ---------- */
+const TL={auto:"อัตโนมัติ",dark:"มืด",light:"สว่าง"};
+function applyTheme(t){if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t);$("#theme").textContent="ธีม: "+TL[t];}
+let theme=localStorage.getItem("mra-theme")||"auto";applyTheme(theme);
+$("#theme").onclick=()=>{theme={auto:"dark",dark:"light",light:"auto"}[theme];localStorage.setItem("mra-theme",theme);applyTheme(theme);};
+
+/* ---------- nav + views ---------- */
+$("#nav").innerHTML=`<a href="#/" data-v="home">หน้าแรก</a>`+P.map(p=>`<a href="#/${p.id}" data-v="${p.id}">${esc(p.short)}</a>`).join("");
+for(const p of P){
+  const v=document.createElement("section");v.className="view";v.id="v-"+p.id;
+  const seg=p.subs?`<div class="seg">${p.subs.map((s,i)=>`<button data-u="${s.url}" class="${i?"":"on"}">${esc(s.label)}</button>`).join("")}</div>`:"";
+  v.innerHTML=`<div class="tb"><h2>${esc(p.name)}</h2><span class="meta" data-meta></span>${seg}<span class="sp"></span>
+    <a class="open" href="${p.url}" target="_blank" rel="noopener">เปิดในแท็บใหม่ ↗</a></div><div class="frame"><div class="loading">กำลังโหลด…</div></div>`;
+  v.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{v.querySelectorAll(".seg button").forEach(x=>x.classList.toggle("on",x===b));
+    const f=v.querySelector("iframe");if(f)f.src=b.dataset.u;v.querySelector("a.open").href=b.dataset.u;});
+  $("#main").appendChild(v);
+}
+function route(){
+  const id=(location.hash.replace(/^#\/?/,"")||"home").split("?")[0];
+  const p=P.find(x=>x.id===id);const vid=p?p.id:"home";
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+vid));
+  document.querySelectorAll("#nav a").forEach(a=>{a.classList.toggle("on",a.dataset.v===vid);if(a.dataset.v===vid)a.scrollIntoView({block:"nearest",inline:"center"});});
+  document.title=(p?p.name+" · ":"")+"MR ALGO Dashboard";
+  if(p){const v=$("#v-"+p.id),fr=v.querySelector(".frame");
+    if(!fr.querySelector("iframe")){const f=document.createElement("iframe");f.src=p.url;f.title=p.name;f.loading="eager";
+      f.setAttribute("allow","autoplay; fullscreen; picture-in-picture");f.onload=()=>{const l=fr.querySelector(".loading");if(l)l.remove();};fr.appendChild(f);}}
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+
+/* ---------- data ---------- */
+let S={sources:{},latest:[]};const live={};
+function src(p){const k=p.key||p.id;const s=Object.assign({extras:{}},S.sources[k]||{});const l=live[p.id];
+  if(l){if(l.count!=null)s.count=l.count;s.extras=Object.assign({},s.extras,l.extras);if(l.updated){s.updated=l.updated;s.updated_is_date=false;}s.live=true;}return s;}
+function render(){
+  $("#cards").innerHTML=P.map(p=>{const s=src(p);const ex=(p.ex(s.extras||{})||[]).filter(Boolean);
+    const fresh=s.updated&&(Date.now()-new Date(s.updated))<36*36e5;
+    const meta=$("#v-"+p.id+" [data-meta]");if(meta)meta.textContent=`${fmt(s.count)} ${p.unit} · อัปเดต ${fdate(s.updated,s.updated_is_date)}`;
+    return `<article class="card"><div class="ch"><div class="ico" style="background:${p.color}">${p.letter}</div>
+      <div><h2>${esc(p.name)}</h2><div class="d">${esc(p.desc)}</div></div></div>
+      <div class="num"><b>${fmt(s.count)}</b><span>${esc(p.unit)}</span></div>
+      ${ex.length?`<div class="ex">${ex.map(x=>`<em>${esc(x)}</em>`).join("")}</div>`:""}
+      <div class="upd"><span class="dot ${fresh?"fresh":""}"></span>${esc(p.updLabel||"อัปเดตล่าสุด")} ${fdate(s.updated,s.updated_is_date)}${s.updated&&!s.updated_is_date?` · ${ago(s.updated)}`:""}</div>
+      <div class="btns"><a class="btn" href="#/${p.id}">เปิดดู</a><a class="btn alt" href="${p.url}" target="_blank" rel="noopener" aria-label="เปิดในแท็บใหม่">↗</a></div></article>`;}).join("");
+  const L=S.latest||[];
+  $("#latest").innerHTML=L.length?L.map(a=>`<a class="li" href="${esc(a.url)}" target="_blank" rel="noopener">
+     ${a.thumb?`<img src="${esc(a.thumb)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph'}))">`:`<div class="ph"></div>`}
+     <div><div class="t">${esc(a.title)}</div><div class="m"><span class="pill" style="background:${SRC_COLOR[a.source]||"#666"}">${esc(SRC_NAME[a.source]||a.source)}</span>${esc(a.who)} · เพิ่มเมื่อ ${fdate(a.added_at)}</div></div></a>`).join("")
+    :`<div class="note">—</div>`;
+  $("#gen").textContent=S.generated_at?`สรุปล่าสุดเมื่อ ${fdate(S.generated_at)}`:"สรุปตัวเลขจากข้อมูลจริงของแต่ละโปรเจกต์";
+}
+render();
+fetch("summary.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{if(d)S=d;render();}).catch(()=>render());
+for(const p of P.filter(p=>p.live)){
+  fetch(p.url+p.live.file+"?t="+Date.now(),{cache:"no-store"}).then(async r=>{if(!r.ok)return;
+    const d=await r.json();const v=p.live.f(d);const lm=r.headers.get("last-modified");
+    live[p.id]={count:v.count,extras:v.extras,updated:v.updated||(lm?new Date(lm).toISOString():null)};render();}).catch(()=>{});
+}
+</script>
+</body>
+</html>

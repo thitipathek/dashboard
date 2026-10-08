@@ -1,0 +1,89 @@
+{
+ "generated_at": "2026-10-09T02:17:13+07:00",
+ "sources": {
+  "instagram": {
+   "count": 114,
+   "updated": "2026-10-08T21:02:43+07:00",
+   "extras": {
+    "accounts": 99,
+    "videos": 63
+   },
+   "url": "https://thitipathek.github.io/instagram-gallery/"
+  },
+  "tiktok": {
+   "count": 89,
+   "updated": "2026-10-08T18:05:26+07:00",
+   "extras": {
+    "accounts": 21
+   },
+   "url": "https://thitipathek.github.io/tiktok-gallery/"
+  },
+  "influencers": {
+   "count": 112,
+   "updated": "2026-10-08T20:35:32+07:00",
+   "extras": {
+    "instagram": 60,
+    "tiktok": 52,
+    "with_stats": 111,
+    "snapshots": 1
+   },
+   "url": "https://thitipathek.github.io/influencer-tracker/"
+  },
+  "coachmap": {
+   "count": 4,
+   "updated": "2026-10-08T17:36:21+07:00",
+   "extras": {},
+   "url": "https://thitipathek.github.io/coach-map/"
+  },
+  "youtube": {
+   "count": 12,
+   "updated": "2026-10-08T18:57:49+07:00",
+   "extras": {
+    "grades": {
+     "A": 3,
+     "B": 7,
+     "C": 2
+    },
+    "videos": 18
+   },
+   "url": "youtube/"
+  },
+  "tradetools": {
+   "count": 10,
+   "updated": "2026-10-04T00:00:00+07:00",
+   "extras": {
+    "bot": 2,
+    "course": 2,
+    "indicator": 6
+   },
+   "url": "trade-tools/",
+   "updated_is_date": true
+  }
+ },
+ "latest": [
+  {
+   "source": "instagram",
+   "title": "A cartoon infographic titled 'Beginner Trader' compares an 'Emotional' monkey trader with a 'Patient' gorilla…",
+   "who": "@capuchinmoney",
+   "url": "https://www.instagram.com/p/DbYShBuB4LZ/",
+   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DbYShBuB4LZ-ytdlp-poster.jpg",
+   "added_at": "2026-10-08T19:32:51+07:00"
+  },
+  {
+   "source": "instagram",
+   "title": "A short video shows a forex trading app account screen (balance 302.14 and equity 392.14 in USD) with the cap…",
+   "who": "@fredazip",
+   "url": "https://www.instagram.com/p/DbvZMslvS80/",
+   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DbvZMslvS80-ytdlp-poster.jpg",
+   "added_at": "2026-10-08T19:32:51+07:00"
+  },
+  {
+   "source": "instagram",
+   "title": "A webcam video of a trader above a chart with Buy Stop and Buy Limit order tags and a -31.00 USD readout, cap…",
+   "who": "@joshgtrades",
+   "url": "https://www.instagram.com/p/DdlvOX9M-aN/",
+   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DdlvOX9M-aN-ytdlp-poster.jpg",
+   "added_at": "2026-10-08T19:32:51+07:00"
+  }
+ ]
+}
