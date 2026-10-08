@@ -250,6 +250,7 @@ function render(){
      <div><div class="t">${esc(a.title)}</div><div class="m"><span class="pill" style="background:${SRC_COLOR[a.source]||"#666"}">${esc(SRC_NAME[a.source]||a.source)}</span>${esc(a.who)} · เพิ่มเมื่อ ${fdate(a.added_at)}</div></div></a>`).join("")
     :`<div class="note">—</div>`;
   $("#gen").textContent=S.generated_at?`สรุปล่าสุดเมื่อ ${fdate(S.generated_at)}`:"สรุปตัวเลขจากข้อมูลจริงของแต่ละโปรเจกต์";
+  renderInsight();
 }
 render();
 fetch("summary.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{if(d)S=d;render();}).catch(()=>render());
