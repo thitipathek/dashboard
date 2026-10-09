@@ -1,26 +1,26 @@
 {
- "generated_at": "2026-10-09T02:49:22+07:00",
+ "generated_at": "2026-10-09T22:26:38+07:00",
  "sources": {
   "instagram": {
-   "count": 114,
-   "updated": "2026-10-08T21:02:43+07:00",
+   "count": 120,
+   "updated": "2026-10-09T19:18:39+07:00",
    "extras": {
-    "accounts": 99,
-    "videos": 63
+    "accounts": 104,
+    "videos": 65
    },
    "url": "https://thitipathek.github.io/instagram-gallery/"
   },
   "tiktok": {
-   "count": 89,
-   "updated": "2026-10-08T18:05:26+07:00",
+   "count": 107,
+   "updated": "2026-10-09T20:15:53+07:00",
    "extras": {
-    "accounts": 21
+    "accounts": 24
    },
    "url": "https://thitipathek.github.io/tiktok-gallery/"
   },
   "influencers": {
    "count": 112,
-   "updated": "2026-10-08T20:35:32+07:00",
+   "updated": "2026-10-09T06:49:23+07:00",
    "extras": {
     "instagram": 60,
     "tiktok": 52,
@@ -60,55 +60,55 @@
    "updated_is_date": true
   },
   "formats": {
-   "count": 221,
-   "updated": "2026-10-09T02:38:34+07:00",
+   "count": 245,
+   "updated": "2026-10-09T20:15:53+07:00",
    "extras": {
-    "chart": 103,
-    "recap": 26,
-    "edu": 25,
-    "psych": 27,
-    "meme": 2,
+    "chart": 114,
+    "recap": 27,
+    "edu": 30,
+    "psych": 28,
+    "meme": 3,
     "lifestyle": 4,
     "quiz": 2,
     "cta": 7,
-    "news": 18,
+    "news": 21,
     "testimonial": 0,
-    "other": 7
+    "other": 9
    },
    "url": "formats/"
   }
  },
  "latest": [
   {
-   "source": "instagram",
-   "title": "A cartoon infographic titled 'Beginner Trader' compares an 'Emotional' monkey trader with a 'Patient' gorilla…",
-   "who": "@capuchinmoney",
-   "url": "https://www.instagram.com/p/DbYShBuB4LZ/",
-   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DbYShBuB4LZ-ytdlp-poster.jpg",
-   "added_at": "2026-10-08T19:32:51+07:00"
+   "source": "tiktok",
+   "title": "Kitco News interviews Lynette Zang on the end of fiat money, stablecoins, and a coming reckoning for gold.",
+   "who": "@kitco.news",
+   "url": "https://www.tiktok.com/@kitco.news/video/7583002063420820767",
+   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7583002063420820767.jpg",
+   "added_at": "2026-10-09T20:15:53+07:00"
   },
   {
-   "source": "instagram",
-   "title": "A short video shows a forex trading app account screen (balance 302.14 and equity 392.14 in USD) with the cap…",
-   "who": "@fredazip",
-   "url": "https://www.instagram.com/p/DbvZMslvS80/",
-   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DbvZMslvS80-ytdlp-poster.jpg",
-   "added_at": "2026-10-08T19:32:51+07:00"
+   "source": "tiktok",
+   "title": "imyfx posts a short XAUUSD day-trading moment.",
+   "who": "@imyfx",
+   "url": "https://www.tiktok.com/@imyfx/video/7655398611588599073",
+   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7655398611588599073.jpg",
+   "added_at": "2026-10-09T20:15:53+07:00"
   },
   {
-   "source": "instagram",
-   "title": "A webcam video of a trader above a chart with Buy Stop and Buy Limit order tags and a -31.00 USD readout, cap…",
-   "who": "@joshgtrades",
-   "url": "https://www.instagram.com/p/DdlvOX9M-aN/",
-   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DdlvOX9M-aN-ytdlp-poster.jpg",
-   "added_at": "2026-10-08T19:32:51+07:00"
+   "source": "tiktok",
+   "title": "Binance posts a short crypto meme clip captioned 'you never know'.",
+   "who": "@binance",
+   "url": "https://www.tiktok.com/@binance/video/7687988581817797902",
+   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7687988581817797902.jpg",
+   "added_at": "2026-10-09T20:15:53+07:00"
   }
  ],
  "formats": {
-  "total_items": 221,
+  "total_items": 245,
   "by_platform": {
-   "instagram": 114,
-   "tiktok": 89,
+   "instagram": 120,
+   "tiktok": 107,
    "youtube": 18
   },
   "headline": [
@@ -117,9 +117,9 @@
     "metric": "likes",
     "format": "psych",
     "name_th": "จิตวิทยา / มายด์เซ็ต",
-    "median": 430650,
-    "n": 16,
-    "text_th": "TikTok: จิตวิทยา / มายด์เซ็ต ได้ไลก์มัธยฐานสูงสุด 430.6K (n=16)"
+    "median": 218500,
+    "n": 17,
+    "text_th": "TikTok: จิตวิทยา / มายด์เซ็ต ได้ไลก์มัธยฐานสูงสุด 218.5K (n=17)"
    },
    {
     "platform": "instagram",
@@ -145,19 +145,19 @@
    {
     "id": "chart",
     "name_th": "วิเคราะห์ชาร์ต / เซ็ตอัป",
-    "count": 103,
+    "count": 114,
     "by_platform": {
-     "instagram": 55,
-     "tiktok": 36,
+     "instagram": 60,
+     "tiktok": 42,
      "youtube": 12
     },
     "platforms": {
      "instagram": {
-      "count": 55,
+      "count": 60,
       "likes": {
-       "n": 52,
-       "avg": 4254,
-       "median": 2249
+       "n": 57,
+       "avg": 3932,
+       "median": 1700
       },
       "comments": {
        "n": 0,
@@ -171,11 +171,11 @@
       }
      },
      "tiktok": {
-      "count": 36,
+      "count": 42,
       "likes": {
-       "n": 36,
-       "avg": 25444,
-       "median": 14100
+       "n": 42,
+       "avg": 22719,
+       "median": 13350
       },
       "comments": {
        "n": 0,
@@ -183,9 +183,9 @@
        "median": null
       },
       "views": {
-       "n": 36,
-       "avg": 429387,
-       "median": 226850
+       "n": 42,
+       "avg": 398819,
+       "median": 223000
       }
      },
      "youtube": {
@@ -236,24 +236,24 @@
       "views": 486000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 14.1K อันดับ 4 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,249 อันดับ 6 จาก 6 รูปแบบ · คิดเป็น 47% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 13.3K อันดับ 4 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 1,700 อันดับ 6 จาก 6 รูปแบบ · คิดเป็น 47% ของทั้งหมด"
    },
    {
     "id": "recap",
     "name_th": "รีแคปเทรด / พิสูจน์ผล",
-    "count": 26,
+    "count": 27,
     "by_platform": {
-     "instagram": 21,
+     "instagram": 22,
      "tiktok": 5,
      "youtube": 0
     },
     "platforms": {
      "instagram": {
-      "count": 21,
+      "count": 22,
       "likes": {
-       "n": 20,
-       "avg": 5388,
-       "median": 2936
+       "n": 21,
+       "avg": 5184,
+       "median": 2900
       },
       "comments": {
        "n": 0,
@@ -332,15 +332,15 @@
       "views": null
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 2,371 อันดับ 6 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,936 อันดับ 3 จาก 6 รูปแบบ · คิดเป็น 12% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 2,371 อันดับ 5 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,900 อันดับ 3 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
    },
    {
     "id": "edu",
     "name_th": "สอน / ทิป / ทิวโทเรียล",
-    "count": 25,
+    "count": 30,
     "by_platform": {
      "instagram": 6,
-     "tiktok": 14,
+     "tiktok": 19,
      "youtube": 5
     },
     "platforms": {
@@ -363,11 +363,11 @@
       }
      },
      "tiktok": {
-      "count": 14,
+      "count": 19,
       "likes": {
-       "n": 14,
-       "avg": 269682,
-       "median": 29250
+       "n": 19,
+       "avg": 199564,
+       "median": 14100
       },
       "comments": {
        "n": 0,
@@ -375,9 +375,9 @@
        "median": null
       },
       "views": {
-       "n": 14,
-       "avg": 2208914,
-       "median": 666700
+       "n": 19,
+       "avg": 1645279,
+       "median": 260400
       }
      },
      "youtube": {
@@ -428,15 +428,15 @@
       "views": 2400000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 29.2K อันดับ 3 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 6,500 อันดับ 2 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 14.1K อันดับ 3 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 6,500 อันดับ 2 จาก 6 รูปแบบ · คิดเป็น 12% ของทั้งหมด"
    },
    {
     "id": "psych",
     "name_th": "จิตวิทยา / มายด์เซ็ต",
-    "count": 27,
+    "count": 28,
     "by_platform": {
      "instagram": 11,
-     "tiktok": 16,
+     "tiktok": 17,
      "youtube": 0
     },
     "platforms": {
@@ -459,11 +459,11 @@
       }
      },
      "tiktok": {
-      "count": 16,
+      "count": 17,
       "likes": {
-       "n": 16,
-       "avg": 473410,
-       "median": 430650
+       "n": 17,
+       "avg": 446227,
+       "median": 218500
       },
       "comments": {
        "n": 0,
@@ -471,9 +471,9 @@
        "median": null
       },
       "views": {
-       "n": 16,
-       "avg": 3500712,
-       "median": 3850000
+       "n": 17,
+       "avg": 3297959,
+       "median": 3400000
       }
      },
      "youtube": {
@@ -524,15 +524,15 @@
       "views": 5800000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 430.6K สูงสุดจาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,723 อันดับ 5 จาก 6 รูปแบบ · คิดเป็น 12% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 218.5K สูงสุดจาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,723 อันดับ 5 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
    },
    {
     "id": "meme",
     "name_th": "มีม / ตลก",
-    "count": 2,
+    "count": 3,
     "by_platform": {
      "instagram": 2,
-     "tiktok": 0,
+     "tiktok": 1,
      "youtube": 0
     },
     "platforms": {
@@ -555,11 +555,11 @@
       }
      },
      "tiktok": {
-      "count": 0,
+      "count": 1,
       "likes": {
-       "n": 0,
-       "avg": null,
-       "median": null
+       "n": 1,
+       "avg": 102600,
+       "median": 102600
       },
       "comments": {
        "n": 0,
@@ -567,9 +567,9 @@
        "median": null
       },
       "views": {
-       "n": 0,
-       "avg": null,
-       "median": null
+       "n": 1,
+       "avg": 2100000,
+       "median": 2100000
       }
      },
      "youtube": {
@@ -593,6 +593,15 @@
     },
     "examples": [
      {
+      "platform": "tiktok",
+      "who": "@binance",
+      "title": "Binance posts a short crypto meme clip captioned 'you never know'.",
+      "url": "https://www.tiktok.com/@binance/video/7687988581817797902",
+      "likes": 102600,
+      "comments": null,
+      "views": 2100000
+     },
+     {
       "platform": "instagram",
       "who": "@lauunq",
       "title": "peak #daytrading",
@@ -611,7 +620,7 @@
       "views": 316000
      }
     ],
-    "takeaway_th": "ตัวอย่างยังน้อย (2 โพสต์) ต้องมีอย่างน้อย 3 โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ · คิดเป็น 1% ของทั้งหมด"
+    "takeaway_th": "ตัวอย่างยังน้อย (3 โพสต์) ต้องมีอย่างน้อย 3 โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ · คิดเป็น 1% ของทั้งหมด"
    },
    {
     "id": "lifestyle",
@@ -895,10 +904,10 @@
    {
     "id": "news",
     "name_th": "ข่าว / อัปเดตตลาด",
-    "count": 18,
+    "count": 21,
     "by_platform": {
      "instagram": 4,
-     "tiktok": 14,
+     "tiktok": 17,
      "youtube": 0
     },
     "platforms": {
@@ -921,11 +930,11 @@
       }
      },
      "tiktok": {
-      "count": 14,
+      "count": 17,
       "likes": {
-       "n": 14,
-       "avg": 99902,
-       "median": 3612
+       "n": 17,
+       "avg": 88426,
+       "median": 1673
       },
       "comments": {
        "n": 0,
@@ -933,9 +942,9 @@
        "median": null
       },
       "views": {
-       "n": 14,
-       "avg": 1318950,
-       "median": 76600
+       "n": 17,
+       "avg": 1192612,
+       "median": 69600
       }
      },
      "youtube": {
@@ -986,7 +995,7 @@
       "views": 10000000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 3,612 อันดับ 5 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 16.7K สูงสุดจาก 6 รูปแบบ · คิดเป็น 8% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 1,673 อันดับ 6 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 16.7K สูงสุดจาก 6 รูปแบบ · คิดเป็น 9% ของทั้งหมด"
    },
    {
     "id": "testimonial",
@@ -1059,10 +1068,10 @@
    {
     "id": "other",
     "name_th": "อื่นๆ",
-    "count": 7,
+    "count": 9,
     "by_platform": {
      "instagram": 5,
-     "tiktok": 1,
+     "tiktok": 3,
      "youtube": 1
     },
     "platforms": {
@@ -1085,11 +1094,11 @@
       }
      },
      "tiktok": {
-      "count": 1,
+      "count": 3,
       "likes": {
-       "n": 1,
-       "avg": 160,
-       "median": 160
+       "n": 3,
+       "avg": 1994,
+       "median": 1309
       },
       "comments": {
        "n": 0,
@@ -1097,9 +1106,9 @@
        "median": null
       },
       "views": {
-       "n": 1,
-       "avg": 4909,
-       "median": 4909
+       "n": 3,
+       "avg": 77003,
+       "median": 29300
       }
      },
      "youtube": {
@@ -1124,12 +1133,12 @@
     "examples": [
      {
       "platform": "tiktok",
-      "who": "@coinbureau",
-      "title": "Argues altseason may be starting, with money chasing altcoins that have real value rather…",
-      "url": "https://www.tiktok.com/@coinbureau/video/7691192671250959638",
-      "likes": 160,
+      "who": "@humphreytalks",
+      "title": "Average 401(k) balances by age and a prompt to check your own retirement savings.",
+      "url": "https://www.tiktok.com/@humphreytalks/video/7673949851704511757",
+      "likes": 4513,
       "comments": null,
-      "views": 4909
+      "views": 196800
      },
      {
       "platform": "instagram",
@@ -1150,14 +1159,14 @@
       "views": 324000
      }
     ],
-    "takeaway_th": "Instagram: ไลก์มัธยฐาน 1,200 (n=4) · คิดเป็น 3% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 1,309 (n=3) · Instagram: ไลก์มัธยฐาน 1,200 (n=4) · คิดเป็น 4% ของทั้งหมด"
    }
   ]
  },
  "insight": {
   "week_start": "2026-10-03",
   "week_end": "2026-10-09",
-  "week_posts_count": 17,
+  "week_posts_count": 23,
   "top_posts": [
    {
     "platform": "tiktok",
@@ -1200,7 +1209,7 @@
    "id": "psych",
    "name_th": "จิตวิทยา / มายด์เซ็ต",
    "count": 2,
-   "lift_median": 0.64,
+   "lift_median": 0.73,
    "likes_n": 2,
    "platforms": [
     "instagram"
@@ -1209,36 +1218,77 @@
   },
   "top_influencers": [
    {
-    "handle": "skylinetradersclub",
+    "handle": "shuhratov_fx",
     "platform": "instagram",
-    "scaled_100": 60.0,
-    "grade": "C",
-    "total": 45,
+    "scaled_100": 73.3,
+    "grade": "B",
+    "total": 55,
     "max": 75,
     "pre_growth": true,
-    "why_th": "ชุมชนเทรด SMC 287K ทำรีลสอน Order Block/FVG สั้นๆ ซ้ำรูปแบบเดิมและวิวค่อนข้างสม่ำเสมอ แต่ ER ต่ำสำหรับขนาด (0.35%) และคอมเมนต์ส่วนใหญ่เป็นอีโมจิ",
+    "why_th": "เทรดเดอร์ทองชาวอุซเบก 22K โพสต์คลิปวิเคราะห์ XAUUSD แนวรับแนวต้านแบบคลาสสิก (SNR) แบบเดียวกันทุกวัน ER ดีตามขนาด (มัธยฐาน 6.0%) วิวสม่ำเสมอมาก และคอมเมนต์มีการคุยเรื่องเทรดจริง (ขาดทุน TP การเข้ารีเทสต์) ทั้งที่ไม่มี CTA เลย",
     "tags": [
-     "คู่แข่งที่ต้องจับตา",
+     "น่าศึกษาคอนเทนต์",
+     "คู่แข่งที่ต้องจับตา"
+    ]
+   },
+   {
+    "handle": "___ict_",
+    "platform": "instagram",
+    "scaled_100": 70.7,
+    "grade": "B",
+    "total": 53,
+    "max": 75,
+    "pre_growth": true,
+    "why_th": "บัญชีเล็ก 9.6K แต่ ER สูงมาก (มัธยฐาน 21.2%) จากรีลอธิบายคอนเซปต์ ICT บน Nasdaq รูปแบบเดิมทุกโพสต์ คอมเมนต์เกินครึ่งเป็นคำถามและการถกจริง แม้ไม่มี CTA และไม่ตอบคอมเมนต์เลย",
+    "tags": [
+     "น่าศึกษาคอนเทนต์",
+     "คู่แข่งที่ต้องจับตา"
+    ]
+   },
+   {
+    "handle": "smart.forexpips",
+    "platform": "instagram",
+    "scaled_100": 70.7,
+    "grade": "B",
+    "total": 53,
+    "max": 75,
+    "pre_growth": true,
+    "why_th": "เพจฟอเร็กซ์ 34.5K ทำรีลสอนรูปแบบกราฟ (Tower top, Quasimodo, Batman) ทุกคลิปขึ้นต้นด้วย ‘จะซื้อหรือขาย?’ ER ดีตามขนาด (มัธยฐาน 8.4%) คนตอบ Buy/Sell ในคอมเมนต์ และมีคอมเมนต์ ‘Guide’ จำนวนมากที่น่าจะมาจากคำชวนในคลิป (มองไม่เห็นจากแคปชัน)",
+    "tags": [
+     "น่าศึกษาคอนเทนต์",
+     "คู่แข่งที่ต้องจับตา"
+    ]
+   },
+   {
+    "handle": "dekoda.trades",
+    "platform": "instagram",
+    "scaled_100": 70.0,
+    "grade": "B",
+    "total": 42,
+    "max": 60,
+    "pre_growth": true,
+    "why_th": "เทรดเดอร์อายุ 19 ปี 800 ผู้ติดตาม ทำคลิปพูดหน้ากล้องเรื่อง OTE บน Nasdaq แบบเดียวกันทุกคลิป วิวสม่ำเสมอ และคอมเมนต์ส่วนใหญ่เป็นคำถามและการถกเรื่องกลยุทธ์ (มีคนถามว่าใช้กับทองได้ไหม) แม้ไม่มี CTA",
+    "tags": [
      "น่าศึกษาคอนเทนต์"
     ]
    },
    {
-    "handle": "tsugitrades",
-    "platform": "instagram",
-    "scaled_100": 46.7,
-    "grade": "D",
-    "total": 35,
-    "max": 75,
+    "handle": "_forexsignals_",
+    "platform": "tiktok",
+    "scaled_100": 68.3,
+    "grade": "B",
+    "total": 41,
+    "max": 60,
     "pre_growth": true,
-    "why_th": "โค้ชเทคนิคอลหุ้น/ออปชัน 176K มีวอตช์ลิสต์รายวันที่ทำซ้ำได้ แต่คนมีส่วนร่วมต่ำสำหรับขนาดบัญชี (ER 0.26%) และ CTA ส่วนใหญ่เป็นแค่ลิงก์ในไบโอ",
+    "why_th": "เพจแพตเทิร์นกราฟ 723K ทำคลิปแอนิเมชันอธิบายเซ็ตอัปแบบเดียวกันทุกคลิป ยอดเซฟสูงมาก (เช่น 4.7K เซฟจาก 226K วิว) แต่โพสต์ห่างขึ้น (ล่าสุด 1 ก.ย. ก่อนหน้า 10 ก.ค.) และวิวขึ้นลงแรง",
     "tags": [
      "น่าศึกษาคอนเทนต์"
     ]
    }
   ],
-  "scored_count": 2,
+  "scored_count": 96,
   "scored_total": 112,
-  "scores_note_th": "ให้คะแนนครบแล้ว 2 จาก 112 บัญชี (ส่วนที่เหลือรอ judgement)",
+  "scores_note_th": "ให้คะแนนครบแล้ว 96 จาก 112 บัญชี (ส่วนที่เหลือรอ judgement)",
   "rising": {
    "available": false,
    "snapshots": 1,
