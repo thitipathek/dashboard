@@ -1,20 +1,20 @@
 {
- "generated_at": "2026-10-09T22:26:38+07:00",
+ "generated_at": "2026-10-10T21:54:42+07:00",
  "sources": {
   "instagram": {
-   "count": 120,
-   "updated": "2026-10-09T19:18:39+07:00",
+   "count": 133,
+   "updated": "2026-10-10T19:18:46+07:00",
    "extras": {
-    "accounts": 104,
-    "videos": 65
+    "accounts": 114,
+    "videos": 69
    },
    "url": "https://thitipathek.github.io/instagram-gallery/"
   },
   "tiktok": {
-   "count": 107,
-   "updated": "2026-10-09T20:15:53+07:00",
+   "count": 118,
+   "updated": "2026-10-10T19:59:17+07:00",
    "extras": {
-    "accounts": 24
+    "accounts": 26
    },
    "url": "https://thitipathek.github.io/tiktok-gallery/"
   },
@@ -60,20 +60,20 @@
    "updated_is_date": true
   },
   "formats": {
-   "count": 245,
-   "updated": "2026-10-09T20:15:53+07:00",
+   "count": 269,
+   "updated": "2026-10-10T19:59:17+07:00",
    "extras": {
-    "chart": 114,
-    "recap": 27,
-    "edu": 30,
-    "psych": 28,
-    "meme": 3,
+    "chart": 122,
+    "recap": 30,
+    "edu": 32,
+    "psych": 31,
+    "meme": 4,
     "lifestyle": 4,
     "quiz": 2,
     "cta": 7,
-    "news": 21,
+    "news": 22,
     "testimonial": 0,
-    "other": 9
+    "other": 15
    },
    "url": "formats/"
   }
@@ -81,34 +81,34 @@
  "latest": [
   {
    "source": "tiktok",
-   "title": "Kitco News interviews Lynette Zang on the end of fiat money, stablecoins, and a coming reckoning for gold.",
+   "title": "Kitco News covers the Fed's latest rate cut and Powell's announcement of $40B in new Treasury purchases.",
    "who": "@kitco.news",
-   "url": "https://www.tiktok.com/@kitco.news/video/7583002063420820767",
-   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7583002063420820767.jpg",
-   "added_at": "2026-10-09T20:15:53+07:00"
+   "url": "https://www.tiktok.com/@kitco.news/video/7583738524776566046",
+   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7583738524776566046.jpg",
+   "added_at": "2026-10-10T19:59:17+07:00"
   },
   {
-   "source": "tiktok",
-   "title": "imyfx posts a short XAUUSD day-trading moment.",
-   "who": "@imyfx",
-   "url": "https://www.tiktok.com/@imyfx/video/7655398611588599073",
-   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7655398611588599073.jpg",
-   "added_at": "2026-10-09T20:15:53+07:00"
+   "source": "instagram",
+   "title": "A Thai trader describes blowing up his account for two years chasing quick riches, then recovering by followi…",
+   "who": "@khate.trader",
+   "url": "https://www.instagram.com/reel/DeJutSGvp4a/",
+   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/DeJutSGvp4a-1.webp",
+   "added_at": "2026-10-10T19:18:46+07:00"
   },
   {
-   "source": "tiktok",
-   "title": "Binance posts a short crypto meme clip captioned 'you never know'.",
-   "who": "@binance",
-   "url": "https://www.tiktok.com/@binance/video/7687988581817797902",
-   "thumb": "https://thitipathek.github.io/tiktok-gallery/media/7687988581817797902.jpg",
-   "added_at": "2026-10-09T20:15:53+07:00"
+   "source": "instagram",
+   "title": "A GBP/JPY M15 trade breakdown walking through full ICT confirmations.",
+   "who": "@ictwithmaria",
+   "url": "https://www.instagram.com/p/Dd_V0JZqH-I/",
+   "thumb": "https://thitipathek.github.io/instagram-gallery/images/hq/Dd_V0JZqH-I-1.jpg",
+   "added_at": "2026-10-10T19:18:46+07:00"
   }
  ],
  "formats": {
-  "total_items": 245,
+  "total_items": 269,
   "by_platform": {
-   "instagram": 120,
-   "tiktok": 107,
+   "instagram": 133,
+   "tiktok": 118,
    "youtube": 18
   },
   "headline": [
@@ -145,19 +145,19 @@
    {
     "id": "chart",
     "name_th": "วิเคราะห์ชาร์ต / เซ็ตอัป",
-    "count": 114,
+    "count": 122,
     "by_platform": {
-     "instagram": 60,
-     "tiktok": 42,
+     "instagram": 63,
+     "tiktok": 47,
      "youtube": 12
     },
     "platforms": {
      "instagram": {
-      "count": 60,
+      "count": 63,
       "likes": {
-       "n": 57,
-       "avg": 3932,
-       "median": 1700
+       "n": 59,
+       "avg": 3813,
+       "median": 1300
       },
       "comments": {
        "n": 0,
@@ -171,11 +171,11 @@
       }
      },
      "tiktok": {
-      "count": 42,
+      "count": 47,
       "likes": {
-       "n": 42,
-       "avg": 22719,
-       "median": 13350
+       "n": 47,
+       "avg": 20872,
+       "median": 12800
       },
       "comments": {
        "n": 0,
@@ -183,9 +183,9 @@
        "median": null
       },
       "views": {
-       "n": 42,
-       "avg": 398819,
-       "median": 223000
+       "n": 47,
+       "avg": 359810,
+       "median": 207700
       }
      },
      "youtube": {
@@ -236,24 +236,24 @@
       "views": 486000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 13.3K อันดับ 4 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 1,700 อันดับ 6 จาก 6 รูปแบบ · คิดเป็น 47% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 12.8K อันดับ 4 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 1,300 อันดับ 6 จาก 6 รูปแบบ · คิดเป็น 45% ของทั้งหมด"
    },
    {
     "id": "recap",
     "name_th": "รีแคปเทรด / พิสูจน์ผล",
-    "count": 27,
+    "count": 30,
     "by_platform": {
-     "instagram": 22,
+     "instagram": 25,
      "tiktok": 5,
      "youtube": 0
     },
     "platforms": {
      "instagram": {
-      "count": 22,
+      "count": 25,
       "likes": {
-       "n": 21,
-       "avg": 5184,
-       "median": 2900
+       "n": 24,
+       "avg": 4645,
+       "median": 2172
       },
       "comments": {
        "n": 0,
@@ -332,23 +332,23 @@
       "views": null
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 2,371 อันดับ 5 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,900 อันดับ 3 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 2,371 อันดับ 5 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,172 อันดับ 5 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
    },
    {
     "id": "edu",
     "name_th": "สอน / ทิป / ทิวโทเรียล",
-    "count": 30,
+    "count": 32,
     "by_platform": {
-     "instagram": 6,
+     "instagram": 8,
      "tiktok": 19,
      "youtube": 5
     },
     "platforms": {
      "instagram": {
-      "count": 6,
+      "count": 8,
       "likes": {
-       "n": 6,
-       "avg": 9677,
+       "n": 8,
+       "avg": 8860,
        "median": 6500
       },
       "comments": {
@@ -433,19 +433,19 @@
    {
     "id": "psych",
     "name_th": "จิตวิทยา / มายด์เซ็ต",
-    "count": 28,
+    "count": 31,
     "by_platform": {
-     "instagram": 11,
+     "instagram": 14,
      "tiktok": 17,
      "youtube": 0
     },
     "platforms": {
      "instagram": {
-      "count": 11,
+      "count": 14,
       "likes": {
-       "n": 11,
-       "avg": 26466,
-       "median": 2723
+       "n": 14,
+       "avg": 29306,
+       "median": 4912
       },
       "comments": {
        "n": 0,
@@ -524,15 +524,15 @@
       "views": 5800000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 218.5K สูงสุดจาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 2,723 อันดับ 5 จาก 6 รูปแบบ · คิดเป็น 11% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 218.5K สูงสุดจาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 4,912 อันดับ 3 จาก 6 รูปแบบ · คิดเป็น 12% ของทั้งหมด"
    },
    {
     "id": "meme",
     "name_th": "มีม / ตลก",
-    "count": 3,
+    "count": 4,
     "by_platform": {
      "instagram": 2,
-     "tiktok": 1,
+     "tiktok": 2,
      "youtube": 0
     },
     "platforms": {
@@ -555,11 +555,11 @@
       }
      },
      "tiktok": {
-      "count": 1,
+      "count": 2,
       "likes": {
-       "n": 1,
-       "avg": 102600,
-       "median": 102600
+       "n": 2,
+       "avg": 51692,
+       "median": 51692
       },
       "comments": {
        "n": 0,
@@ -567,9 +567,9 @@
        "median": null
       },
       "views": {
-       "n": 1,
-       "avg": 2100000,
-       "median": 2100000
+       "n": 2,
+       "avg": 1061850,
+       "median": 1061850
       }
      },
      "youtube": {
@@ -620,7 +620,7 @@
       "views": 316000
      }
     ],
-    "takeaway_th": "ตัวอย่างยังน้อย (3 โพสต์) ต้องมีอย่างน้อย 3 โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ · คิดเป็น 1% ของทั้งหมด"
+    "takeaway_th": "ตัวอย่างยังน้อย (4 โพสต์) ต้องมีอย่างน้อย 3 โพสต์ที่มีตัวเลขต่อแพลตฟอร์มจึงจะจัดอันดับ · คิดเป็น 1% ของทั้งหมด"
    },
    {
     "id": "lifestyle",
@@ -716,7 +716,7 @@
       "views": 2500000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 132.6K อันดับ 2 จาก 6 รูปแบบ · TikTok: วิวมัธยฐาน 2.5M อันดับ 2 จาก 6 รูปแบบ · คิดเป็น 2% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 132.6K อันดับ 2 จาก 6 รูปแบบ · TikTok: วิวมัธยฐาน 2.5M อันดับ 2 จาก 6 รูปแบบ · คิดเป็น 1% ของทั้งหมด"
    },
    {
     "id": "quiz",
@@ -904,10 +904,10 @@
    {
     "id": "news",
     "name_th": "ข่าว / อัปเดตตลาด",
-    "count": 21,
+    "count": 22,
     "by_platform": {
      "instagram": 4,
-     "tiktok": 17,
+     "tiktok": 18,
      "youtube": 0
     },
     "platforms": {
@@ -930,11 +930,11 @@
       }
      },
      "tiktok": {
-      "count": 17,
+      "count": 18,
       "likes": {
-       "n": 17,
-       "avg": 88426,
-       "median": 1673
+       "n": 18,
+       "avg": 83517,
+       "median": 1521
       },
       "comments": {
        "n": 0,
@@ -942,9 +942,9 @@
        "median": null
       },
       "views": {
-       "n": 17,
-       "avg": 1192612,
-       "median": 69600
+       "n": 18,
+       "avg": 1126420,
+       "median": 57450
       }
      },
      "youtube": {
@@ -995,7 +995,7 @@
       "views": 10000000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 1,673 อันดับ 6 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 16.7K สูงสุดจาก 6 รูปแบบ · คิดเป็น 9% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 1,521 อันดับ 6 จาก 6 รูปแบบ · Instagram: ไลก์มัธยฐาน 16.7K สูงสุดจาก 6 รูปแบบ · คิดเป็น 8% ของทั้งหมด"
    },
    {
     "id": "testimonial",
@@ -1068,18 +1068,18 @@
    {
     "id": "other",
     "name_th": "อื่นๆ",
-    "count": 9,
+    "count": 15,
     "by_platform": {
-     "instagram": 5,
-     "tiktok": 3,
+     "instagram": 7,
+     "tiktok": 7,
      "youtube": 1
     },
     "platforms": {
      "instagram": {
-      "count": 5,
+      "count": 7,
       "likes": {
-       "n": 4,
-       "avg": 2282,
+       "n": 6,
+       "avg": 2123,
        "median": 1200
       },
       "comments": {
@@ -1094,11 +1094,11 @@
       }
      },
      "tiktok": {
-      "count": 3,
+      "count": 7,
       "likes": {
-       "n": 3,
-       "avg": 1994,
-       "median": 1309
+       "n": 7,
+       "avg": 5802,
+       "median": 3422
       },
       "comments": {
        "n": 0,
@@ -1106,9 +1106,9 @@
        "median": null
       },
       "views": {
-       "n": 3,
-       "avg": 77003,
-       "median": 29300
+       "n": 7,
+       "avg": 129716,
+       "median": 107200
       }
      },
      "youtube": {
@@ -1133,12 +1133,12 @@
     "examples": [
      {
       "platform": "tiktok",
-      "who": "@humphreytalks",
-      "title": "Average 401(k) balances by age and a prompt to check your own retirement savings.",
-      "url": "https://www.tiktok.com/@humphreytalks/video/7673949851704511757",
-      "likes": 4513,
+      "who": "@binance",
+      "title": "Binance jokes about how some traders set their stop losses.",
+      "url": "https://www.tiktok.com/@binance/video/7681231240976010509",
+      "likes": 22300,
       "comments": null,
-      "views": 196800
+      "views": 401000
      },
      {
       "platform": "instagram",
@@ -1159,27 +1159,15 @@
       "views": 324000
      }
     ],
-    "takeaway_th": "TikTok: ไลก์มัธยฐาน 1,309 (n=3) · Instagram: ไลก์มัธยฐาน 1,200 (n=4) · คิดเป็น 4% ของทั้งหมด"
+    "takeaway_th": "TikTok: ไลก์มัธยฐาน 3,422 (n=7) · Instagram: ไลก์มัธยฐาน 1,200 (n=6) · คิดเป็น 6% ของทั้งหมด"
    }
   ]
  },
  "insight": {
-  "week_start": "2026-10-03",
-  "week_end": "2026-10-09",
-  "week_posts_count": 23,
+  "week_start": "2026-10-04",
+  "week_end": "2026-10-10",
+  "week_posts_count": 29,
   "top_posts": [
-   {
-    "platform": "tiktok",
-    "who": "@marktilbury",
-    "title": "Holds up a 1oz gold coin bought at Costco and why he bought it.",
-    "url": "https://www.tiktok.com/@marktilbury/video/7692472479121509654",
-    "date": "2026-10-03",
-    "format": "lifestyle",
-    "format_th": "ไลฟ์สไตล์ / โชว์ไลฟ์",
-    "likes": 22000,
-    "comments": null,
-    "views": 771400
-   },
    {
     "platform": "tiktok",
     "who": "@humphreytalks",
@@ -1191,6 +1179,18 @@
     "likes": 6147,
     "comments": null,
     "views": 204400
+   },
+   {
+    "platform": "instagram",
+    "who": "@zmcapitals",
+    "title": "A supply-and-demand trader reflects on a crazy trading week.",
+    "url": "https://www.instagram.com/p/DeP_n6QCDqH/",
+    "date": "2026-10-08",
+    "format": "other",
+    "format_th": "อื่นๆ",
+    "likes": 3431,
+    "comments": null,
+    "views": null
    },
    {
     "platform": "instagram",
@@ -1206,10 +1206,10 @@
    }
   ],
   "best_format": {
-   "id": "psych",
-   "name_th": "จิตวิทยา / มายด์เซ็ต",
+   "id": "other",
+   "name_th": "อื่นๆ",
    "count": 2,
-   "lift_median": 0.73,
+   "lift_median": 0.79,
    "likes_n": 2,
    "platforms": [
     "instagram"
